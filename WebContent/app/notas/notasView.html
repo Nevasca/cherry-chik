@@ -1,0 +1,41 @@
+<div class="page-header">
+	<h1>Notas</h1>
+	Coloque aqui anotações rápidas, como respostas prontas para aqueles clientes que nunca leem as informações da loja
+	<p><small>Para casos que precisam de mais atenção, utilize o <a href="">cadastro de pendências</a></small></p>
+</div>
+<div class="row">
+	<div class="col-md-4 col-md-offset-4">
+		<div class="thumbnail">
+			<div class="caption">				
+				<form>
+					<div class="form-group">
+						<input type="text" class="form-control" style="font-weight: bold;" placeholder="Título" ng-model="novaNota.titulo">
+					</div>
+					<div class="form-group">
+						<textarea class="form-control" rows="3" placeholder="Criar uma nota..." ng-model="novaNota.conteudo"></textarea>
+					</div>
+					<div class="form-group">
+						<button class="btn btn-primary" style="margin-right: 10px" ng-click="adicionarNota()"><span class="glyphicon glyphicon-ok"></span> Salvar</button>
+						<button class="btn btn-default" style="width: 50px; margin-right: 10px"><span class="glyphicon glyphicon-trash"></span></button>
+					</div>
+				</form>
+			</div>
+		</div>
+	</div>
+</div>
+
+<div class="page-header">
+	<h1>Já cadastradas <span class="badge">{{notas.length}}</span></h1>
+</div>
+
+<div class="row">
+	<div class="col-md-4" ng-repeat="nota in notas">
+		<div class="thumbnail">
+			<div class="caption">
+				<h3>{{nota.titulo}}</h3>
+				<p>{{nota.conteudo}}</p>
+				<p><a href="" class="btn btn-default" title="Copiar"><span class="glyphicon glyphicon-copy"></span></a></p>
+			</div>
+		</div>
+	</div>	
+</div>
