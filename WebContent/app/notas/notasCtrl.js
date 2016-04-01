@@ -1,32 +1,64 @@
 (function(){
 	angular
 		.module("gestaoCherry")
-		.controller("NotasCtrl", ["$scope", NotasCtrl]);
+		.controller("NotasCtrl", ["$scope", "notas", "notaResource", "$location", "$anchorScroll", NotasCtrl]);
 	
-	function NotasCtrl($scope) {
+	function NotasCtrl($scope, notas, notaResource, $location, $anchorScroll) {
 		
-		//Para testes
-		$scope.notas = [
-		   {"id": 1,
-			"titulo": "Faz logo?",
-			"conteudo": "Infelizmente não conseguimos confeccionar porque nossa estamparia é terceirizada"
-		   },
-		   {"id": 2,
-			"titulo": "Onde fica a loja?",
-			"conteudo": "Nossa loja física fica no Brás - SP nesse endereço: Av Vautier,284 Shopping Vautier 1 Piso, Ala Indigo Box 204 Canindé, São Paulo 03031-000 Próxima ao caixa eletrônico e à praça de alimentação. Funcionamos de seg à sexta das 04h às 16h e de sáb das 04h às 12h"
-		   },
-		   {"id": 3,
-			"titulo": "Onde fica a loja?",
-			"conteudo": "Como são estoques diferentes, para saber os modelos disponíveis é necessário entrar em contato diretamente com as meninas da loja física: Fixo: (11) 2739-7151 Whats: Rose (11) 97323-6821"
-		   }
-		];
+		$scope.notas = notas;
+		//Para copiar o conteudo da nota quando clicar em um botao com a classe abaixo aplicada
+		var clipboard = new Clipboard(".copiar");		
 		
-		$scope.adicionarNota = function() {			
-			if(!$scope.novaNota.id) {
-				$scope.novaNota.id = $scope.notas[$scope.notas.length - 1].id + 1;				
+		$scope.salvarNota = function() {
+			//Verifica se exite um id (está editando uma nota já criada) ou é uma nova
+			var id = $scope.novaNota.id ? $scope.novaNota.id : 0;
+			var nota = new notaResource({id: id}); //Instancia o resource com o id da nota						
+			nota.titulo = $scope.novaNota.titulo;
+			nota.conteudo = $scope.novaNota.conteudo;
+			var notaSalva = nota.$save().then(function(response){return response.data});
+			
+			if(id == 0)
+			{
+				$scope.notas.push(notaSalva);
 			}
-			$scope.notas.push($scope.novaNota);
-			$scope.novaNota = {};	
+			
+			//atualizarLista();
+			$scope.limparNota();
+		}
+		
+		//Pega uma nota existente no array e coloca para edicao
+		$scope.editarNota = function(nota) {	
+			$scope.novaNota = $scope.notas[$scope.notas.indexOf(nota)];
+			
+			//Rola a pagina ate a div com id 'editarNota'
+			$location.hash("editarNota");
+			$anchorScroll();
+		};
+		
+		$scope.limparNota = function() {
+			$scope.novaNota = {};
+		};
+				
+		$scope.deletarNota = function(id) {
+			notaResource.remove({id: id}); //Remove do banco
+			
+			//Remove o elemento da pagina 
+			//(a navegacao fica mais fluida quando nao atualiza a lista, alem de nao precisar consultar novamente no banco)
+			var index = 0;
+			for(var i = 0; i < notas.length; i++) {
+				if(notas[i].id == id) {
+					index = i;
+					break;
+				}
+			}						
+			$scope.notas.splice(index, 1);
+			
+			//atualizarLista();
+		};
+		
+		//Atualiza o array de notas consultando o web service
+		function atualizarLista() {
+			$scope.notas = notaResource.query();
 		}
 	}
 }());

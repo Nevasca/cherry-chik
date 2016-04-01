@@ -1,4 +1,5 @@
-<div class="page-header">
+
+<div class="page-header" id="editarNota">
 	<h1>Notas</h1>
 	Coloque aqui anotações rápidas, como respostas prontas para aqueles clientes que nunca leem as informações da loja
 	<p><small>Para casos que precisam de mais atenção, utilize o <a href="">cadastro de pendências</a></small></p>
@@ -14,9 +15,9 @@
 					<div class="form-group">
 						<textarea class="form-control" rows="3" placeholder="Criar uma nota..." ng-model="novaNota.conteudo"></textarea>
 					</div>
-					<div class="form-group">
-						<button class="btn btn-primary" style="margin-right: 10px" ng-click="adicionarNota()"><span class="glyphicon glyphicon-ok"></span> Salvar</button>
-						<button class="btn btn-default" style="width: 50px; margin-right: 10px"><span class="glyphicon glyphicon-trash"></span></button>
+					<div class="form-group">						
+						<button class="btn btn-default" style="width: 50px; margin-right: 10px" ng-click="limparNota()" data-toggle="tooltip" title="Limpar Nota"><span class="glyphicon glyphicon-trash"></span></button>
+						<button class="btn btn-primary" style="margin-right: 10px" ng-click="salvarNota()"><span class="glyphicon glyphicon-ok"></span> Salvar</button>
 					</div>
 				</form>
 			</div>
@@ -29,13 +30,31 @@
 </div>
 
 <div class="row">
-	<div class="col-md-4" ng-repeat="nota in notas">
-		<div class="thumbnail">
-			<div class="caption">
-				<h3>{{nota.titulo}}</h3>
-				<p>{{nota.conteudo}}</p>
-				<p><a href="" class="btn btn-default" title="Copiar"><span class="glyphicon glyphicon-copy"></span></a></p>
-			</div>
+<!-- 	<div ng-repeat="nota in notas">		 -->
+<!-- 		<div class="thumbnail"> -->
+<!-- 			<div class="caption"> -->
+<!-- 				<h3>{{nota.titulo}}</h3> -->
+<!-- 				<p id="{{'nota' + nota.id}}">{{nota.conteudo}}</p> -->
+<!-- 				<p><a href="" class="btn btn-default glyphicon glyphicon-copy" data-toggle="tooltip" title="Copiar" data-clipboard-target="{{'#nota' + nota.id}}"></a></p> -->
+<!-- 			</div> -->
+<!-- 		</div> -->
+<!-- 	</div>	 -->
+	<div ng-repeat="nota in notas">		
+		<div class="panel panel-default">
+			<div class="panel-heading" style="font-weight: bold">{{nota.titulo}}</div>
+			<div class="panel-body">
+				<p id="{{'nota' + nota.id}}">{{nota.conteudo}}</p>				
+				<a class="btn btn-default copiar" style="margin-right: 10px" data-toggle="tooltip" title="Copiar" data-clipboard-target="{{'#nota' + nota.id}}">
+					<span class="glyphicon glyphicon-copy"></span> Copiar
+				</a>
+				<a class="btn btn-default" style="margin-right: 10px" title="Editar" ng-click="editarNota(nota)">
+					<span class="glyphicon glyphicon-pencil"></span> Editar
+				</a>
+				<a class="btn btn-default" style="margin-right: 10px" title="Deletar" ng-click="deletarNota(nota.id)">
+					<span class="glyphicon glyphicon-remove"></span> Deletar
+				</a>
+			</div>									
 		</div>
-	</div>	
+	</div>
 </div>
+<script>
