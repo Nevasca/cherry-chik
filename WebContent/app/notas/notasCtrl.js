@@ -1,9 +1,9 @@
 (function(){
 	angular
 		.module("gestaoCherry")
-		.controller("NotasCtrl", ["$scope", "notas", "notaResource", "$location", "$anchorScroll", NotasCtrl]);
+		.controller("NotasCtrl", ["$scope", "notas", "notaResource", NotasCtrl]);
 	
-	function NotasCtrl($scope, notas, notaResource, $location, $anchorScroll) {
+	function NotasCtrl($scope, notas, notaResource) {
 		
 		$scope.notas = notas;
 		//Para copiar o conteudo da nota quando clicar em um botao com a classe abaixo aplicada
@@ -15,24 +15,22 @@
 			var nota = new notaResource({id: id}); //Instancia o resource com o id da nota						
 			nota.titulo = $scope.novaNota.titulo;
 			nota.conteudo = $scope.novaNota.conteudo;
-			var notaSalva = nota.$save().then(function(response){return response.data});
-			
+			nota.$save();
+			//Ver como pegar o valor de retorno da requisicao, está vindo como undefined
+			//var notaSalva = nota.$save().then(function(response){return response.data});			
 			if(id == 0)
 			{
-				$scope.notas.push(notaSalva);
+				//$scope.notas.push(notaSalva);
+				atualizarLista();
 			}
-			
-			//atualizarLista();
+						
 			$scope.limparNota();
 		}
 		
 		//Pega uma nota existente no array e coloca para edicao
-		$scope.editarNota = function(nota) {	
-			$scope.novaNota = $scope.notas[$scope.notas.indexOf(nota)];
+		$scope.editarNota = function(nota) {
 			
-			//Rola a pagina ate a div com id 'editarNota'
-			$location.hash("editarNota");
-			$anchorScroll();
+			$scope.novaNota = nota;
 		};
 		
 		$scope.limparNota = function() {

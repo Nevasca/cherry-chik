@@ -2,6 +2,7 @@
 	
 	var app = angular.module("gestaoCherry", ["ui.router",
 	                                          "common.services",
+	                                          "ngSanitize",
 	                                          "notaResourceMock"]);
 	
 	app.config(["$stateProvider", "$urlRouterProvider",
@@ -34,6 +35,11 @@
 									}).$promise;
 								}
 							}
+						})
+						.state("enderecador", {
+							url: "/enderecador",
+							templateUrl: "app/enderecador/enderecadorView.html",
+							controller: "EnderecadorCtrl"
 						});
 		
 	}]);

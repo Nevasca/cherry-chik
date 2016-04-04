@@ -17,6 +17,7 @@
 <script type="text/javascript" src="resources/js/angular-ui-router.js"></script>
 <script type="text/javascript" src="resources/js/angular-resource.js"></script>
 <script type="text/javascript" src="resources/js/angular-mocks.js"></script>
+<script type="text/javascript" src="resources/js/angular-sanitize.js"></script>
 
 <!-- Aplicacao -->
 <script type="text/javascript" src="app/app.js"></script>
@@ -28,6 +29,7 @@
 
 <!-- Controllers -->
 <script type="text/javascript" src="app/notas/notasCtrl.js"></script>
+<script type="text/javascript" src="app/enderecador/enderecadorCtrl.js"></script>
 
 </head>
 <body ng-app="gestaoCherry">
@@ -36,6 +38,7 @@
 			<a class="navbar-brand" ui-sref="home">Gestão Cherry</a>
 			<ul class="nav navbar-nav">
 				<li><a ui-sref="notas"><span class="glyphicon glyphicon-pencil"></span> Notas</a></li>
+				<li><a ui-sref="enderecador"><span class="glyphicon glyphicon-send"></span> Endereçador</a></li>				
 			</ul>
 		</div>
 	</nav>
