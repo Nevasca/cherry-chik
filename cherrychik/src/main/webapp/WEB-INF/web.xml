@@ -19,17 +19,38 @@ xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns
 			<param-name>contextConfigLocation</param-name>
 			<param-value>/WEB-INF/config/servlet-config.xml</param-value>
 		</init-param>
-	</servlet>
+		<load-on-startup>1</load-on-startup>
+	</servlet>	
+	
+<!-- 	<servlet-mapping> -->
+<!-- 		<servlet-name>appServlet</servlet-name> -->
+<!--  		<url-pattern>*.html</url-pattern> -->
+<!-- 	</servlet-mapping> -->
+	
+<!-- 	<servlet-mapping> -->
+<!-- 		<servlet-name>appServlet</servlet-name> -->
+<!--  		<url-pattern>/</url-pattern> -->
+<!-- 	</servlet-mapping>	 -->
+	
+<!-- 	<servlet-mapping> -->
+<!-- 		<servlet-name>appServlet</servlet-name> -->
+<!--  		<url-pattern>/</url-pattern> -->
+<!-- 	</servlet-mapping> -->
 	
 	<servlet-mapping>
 		<servlet-name>appServlet</servlet-name>
- 		<url-pattern>*.html</url-pattern>
-	</servlet-mapping>	
-	
-	<servlet-mapping>
-		<servlet-name>appServlet</servlet-name>
-		<url-pattern>/resources/**</url-pattern>
+ 		<url-pattern>/</url-pattern>
 	</servlet-mapping>
+	
+<!-- 	<servlet-mapping> -->
+<!-- 		<servlet-name>appServlet</servlet-name> -->
+<!--  		<url-pattern>/api/**</url-pattern> -->
+<!-- 	</servlet-mapping> -->
+	
+<!-- 	<servlet-mapping> -->
+<!-- 		<servlet-name>appServlet</servlet-name> -->
+<!-- 		<url-pattern>/resources/**</url-pattern> -->
+<!-- 	</servlet-mapping> -->
 	
   <display-name>Archetype Created Web Application</display-name>
 </web-app>

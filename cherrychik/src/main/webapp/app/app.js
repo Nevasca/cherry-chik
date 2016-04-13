@@ -2,8 +2,7 @@
 	
 	var app = angular.module("gestaoCherry", ["ui.router",
 	                                          "common.services",
-	                                          "ngSanitize",
-	                                          "notaResourceMock"]);
+	                                          "ngSanitize"]); //,"notaResourceMock"
 	
 	app.config(["$stateProvider", "$urlRouterProvider",
 	            function($stateProvider, $urlRouterProvider) {

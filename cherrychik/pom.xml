@@ -61,7 +61,13 @@
 		</exclusions>
 	</dependency>
     
-    
+<!--     Para usar JSON no RESTFUL web service -->
+	<dependency>
+		<groupId>com.fasterxml.jackson.core</groupId>
+		<artifactId>jackson-databind</artifactId>
+		<version>2.7.3</version>
+	</dependency>
+
   </dependencies>
   <build>
     <finalName>cherrychik</finalName>

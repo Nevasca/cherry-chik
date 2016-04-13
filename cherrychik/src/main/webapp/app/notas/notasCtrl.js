@@ -6,7 +6,7 @@
 	function NotasCtrl($scope, notas, notaResource) {
 		
 		$scope.notas = notas;
-		//Para copiar o conteudo da nota quando clicar em um botao com a classe abaixo aplicada
+		//Para copiar o descricao da nota quando clicar em um botao com a classe abaixo aplicada
 		var clipboard = new Clipboard(".copiar");			
 		
 		$scope.salvarNota = function() {
@@ -14,7 +14,7 @@
 			var id = $scope.novaNota.id ? $scope.novaNota.id : 0;
 			var nota = new notaResource({id: id}); //Instancia o resource com o id da nota						
 			nota.titulo = $scope.novaNota.titulo;
-			nota.conteudo = $scope.novaNota.conteudo;
+			nota.descricao = $scope.novaNota.descricao;
 			nota.$save();
 			//Ver como pegar o valor de retorno da requisicao, está vindo como undefined
 			//var notaSalva = nota.$save().then(function(response){return response.data});			
