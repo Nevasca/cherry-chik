@@ -29,7 +29,7 @@ public class NotaServiceImpl implements NotaService {
 	}
 	
 	public void deletar(Long id) {
-		notaRepository.delete(id);
+		notaRepository.delete(id);		
 	}
 
 }

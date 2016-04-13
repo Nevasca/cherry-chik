@@ -6,31 +6,36 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
 @Entity
-public class Nota {
+public class Enderecador {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
-	private String titulo;
-	private String descricao;
-	
+	private String endereco;
+	private String tipo;
+		
 	public Long getId() {
 		return id;
 	}
+	
 	public void setId(Long id) {
 		this.id = id;
 	}
-	public String getTitulo() {
-		return titulo;
+	
+	public String getEndereco() {
+		return endereco;
 	}
-	public void setTitulo(String titulo) {
-		this.titulo = titulo;
+	
+	public void setEndereco(String endereco) {
+		this.endereco = endereco;
 	}
-	public String getDescricao() {
-		return descricao;
+	
+	public String getTipo() {
+		return tipo;
 	}
-	public void setDescricao(String descricao) {
-		this.descricao = descricao;
+	
+	public void setTipo(String tipo) {
+		this.tipo = tipo;
 	}
 	
 }

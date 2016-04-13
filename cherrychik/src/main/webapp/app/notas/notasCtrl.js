@@ -19,7 +19,7 @@
 					
 			if(id == null)
 			{
-				notaService.salvarNota($scope.novaNota).then(atualizarLista);				
+				notaService.salvarNota($scope.novaNota).then(atualizarLista); //Atualiza a lista com o novo criado			
 			}
 			else {
 				notaService.salvarNota($scope.novaNota);

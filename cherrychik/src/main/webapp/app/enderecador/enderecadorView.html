@@ -37,14 +37,11 @@
 	</div>
 </div>
 <!-- Fim do modal -->
-<div ng-repeat="nota in notas">
-	{{nota.id}} | {{nota.titulo}} | {{nota.descricao}}	
-</div>
 
 <!-- Lista de endereçadores -->
 <div class="enderecador" ng-repeat="enderecador in enderecadores">
 	<p ng-bind-html="enderecador.endereco"></p>
-	<img ng-src="/cherry-chik/resources/images/enderecador{{enderecador.tipo}}.png" height="350px">
+	<img ng-src="/cherrychik/resources/images/enderecador{{enderecador.tipo}}.png" height="350px">
 	<div>	
 		<a class="btn btn-link" style="margin-right: 10px" title="Editar" data-toggle="modal" data-target="#edicaoEnderecador" ng-click="editarEnderecador(enderecador)">
 			<span class="glyphicon glyphicon-pencil"></span> Editar

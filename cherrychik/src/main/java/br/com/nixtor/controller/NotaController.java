@@ -19,17 +19,8 @@ import br.com.nixtor.service.NotaService;
 public class NotaController {
 
 	@Autowired
-	NotaService notaService;
+	private NotaService notaService;
 	
-//	
-//	@RequestMapping(value = "addNota", method = RequestMethod.GET)
-//	public void addNota() {
-//		Nota nota = new Nota();
-//		nota.setTitulo("Teste");
-//		nota.setDescricao("Teste Funcionou");
-//		notaService.save(nota);
-//	}
-//	
 	@RequestMapping(value = "/api/notas/", method = RequestMethod.GET)
 	public ResponseEntity<List<Nota>> listarNotas() {		
 		
@@ -38,7 +29,7 @@ public class NotaController {
 	}
 	
 	@RequestMapping(value = "/api/notas/", method = RequestMethod.POST)
-	public ResponseEntity<Nota> salvarNota(@RequestBody Nota nota, UriComponentsBuilder ucBuilder) {		
+	public ResponseEntity<Nota> salvarNota(@RequestBody Nota nota) {		
 
 		Nota notaSalva = notaService.salvar(nota);
 		notaService.salvar(nota);

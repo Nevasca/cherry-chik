@@ -28,7 +28,7 @@
 <script type="text/javascript" src="common/services/common.services.js"></script>
 <script type="text/javascript" src="common/services/notaResource.js"></script>
 <script type="text/javascript" src="common/services/notaService.js"></script>
-<script type="text/javascript" src="common/services/notaResourceMock.js"></script>
+<script type="text/javascript" src="common/services/enderecadorService.js"></script>
 
 <!-- Controllers -->
 <script type="text/javascript" src="app/notas/notasCtrl.js"></script>

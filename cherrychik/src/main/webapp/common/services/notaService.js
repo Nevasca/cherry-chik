@@ -12,19 +12,16 @@
 			return $http.get(url)
 				.then(function(response) {
 					return response.data;
-				});	
-			
+				});			
 		}
 		
 		function salvarNota(nota) {
 			return $http.post(url, nota).then(function(response){return response.data;});
 		}
 		
-		function deletarNota(id) {
+		function deletarNota(id) {			
 			$http.delete(url + id);
-		}
-		
-		
+		}				
 		
 		return {
 			listarNotas: listarNotas,

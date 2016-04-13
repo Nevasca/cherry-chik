@@ -1,12 +1,11 @@
 (function(){
 	angular
 		.module("gestaoCherry")
-		.controller("EnderecadorCtrl", ["$scope", "$sce", "notaService", EnderecadorCtrl]);
+		.controller("EnderecadorCtrl", ["$scope", "$sce", "enderecadorService", EnderecadorCtrl]);
 	
-	function EnderecadorCtrl($scope, $sce, notaService) {							
+	function EnderecadorCtrl($scope, $sce, enderecadorService) {							
 		
-		$scope.novoEnderecador = {endereco: "", tipo: "PAC"};			
-		
+		$scope.novoEnderecador = {endereco: "", tipo: "PAC"};		
 		$scope.enderecadores = [];
 		
 		$scope.limparEnderecador = function() {
@@ -14,16 +13,15 @@
 		};
 		
 		$scope.addEnderecador = function() {
-			$scope.novoEnderecador.endereco = $sce.trustAsHtml($scope.novoEnderecador.endereco);
-			if(!$scope.novoEnderecador.id) {
-				if($scope.enderecadores.length > 0) {
-					$scope.novoEnderecador.id = $scope.enderecadores[$scope.enderecadores.length - 1].id + 1;
-				}
-				else {
-					$scope.novoEnderecador.id = 1;
-				}				
-				$scope.enderecadores.push($scope.novoEnderecador);
+			$scope.novoEnderecador.endereco = $sce.trustAsHtml($scope.novoEnderecador.endereco).toString();
+			
+			var id = $scope.novoEnderecador.id ? $scope.novoEnderecador.id : null;			
+			if(id == null) {
+				enderecadorService.salvarEnderecador($scope.novoEnderecador).then(atualizarLista);
 			}
+			else {
+				enderecadorService.salvarEnderecador($scope.novoEnderecador)
+			}			
 			
 			$scope.limparEnderecador();
 		};
@@ -41,6 +39,10 @@
 			  $scope.novoEnderecador.endereco = $scope.novoEnderecador.endereco.replace(/\n/g, "<br>");
 		});
 		
+		//Atualiza o array de notas consultando o web service
+		function atualizarLista(data) {
+			$scope.enderecadores.push(data);
+		}
+		
 	}
-	
 }());

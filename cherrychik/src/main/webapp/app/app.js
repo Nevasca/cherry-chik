@@ -19,22 +19,6 @@
 							controller: "NotasCtrl",
 							resolve: {
 								
-//								notaResource: "notaResource",
-//								notas: function(notaResource) {
-//									return notaResource.get(function(response) {
-//										
-//									},
-//									function(response) {
-//										if(response.status == 404) {
-//											alert("Servidor não encontrado: " + response.config.method + " " + response.config.url);;
-//										}
-//										else
-//										{
-//											alert(response.statusText);
-//										}
-//									}).$promise;
-//								}
-								
 								notaService: "notaService",
 								notas: function(notaService) {
 									return notaService.listarNotas();
