@@ -1,0 +1,15 @@
+.copiar {}
+
+.enderecador {
+	margin-bottom: 30px;
+}
+
+.enderecador > p{	
+	position: absolute;
+	width: 400px;
+	text-align: justify;
+	font-size: 15px;
+	padding-top: 80px;
+	padding-left: 20px;	
+	z-index: 2;
+}

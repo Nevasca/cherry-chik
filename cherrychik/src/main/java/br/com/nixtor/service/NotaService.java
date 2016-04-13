@@ -6,7 +6,11 @@ import br.com.nixtor.model.Nota;
 
 public interface NotaService {
 
-	Nota save(Nota nota);
+	Nota salvar(Nota nota);
 
 	List<Nota> listarNotas();
+	
+	Nota buscarPorId(Long id);
+	
+	void deletar(Long id);
 }

@@ -1,9 +1,9 @@
 (function(){
 	angular
 		.module("gestaoCherry")
-		.controller("NotasCtrl", ["$scope", "notas", "notaResource", NotasCtrl]);
+		.controller("NotasCtrl", ["$scope", "notas", "notaService", NotasCtrl]);
 	
-	function NotasCtrl($scope, notas, notaResource) {
+	function NotasCtrl($scope, notas, notaService) {
 		
 		$scope.notas = notas;
 		//Para copiar o descricao da nota quando clicar em um botao com a classe abaixo aplicada
@@ -11,17 +11,18 @@
 		
 		$scope.salvarNota = function() {
 			//Verifica se exite um id (está editando uma nota já criada) ou é uma nova
-			var id = $scope.novaNota.id ? $scope.novaNota.id : 0;
-			var nota = new notaResource({id: id}); //Instancia o resource com o id da nota						
-			nota.titulo = $scope.novaNota.titulo;
-			nota.descricao = $scope.novaNota.descricao;
-			nota.$save();
-			//Ver como pegar o valor de retorno da requisicao, está vindo como undefined
-			//var notaSalva = nota.$save().then(function(response){return response.data});			
-			if(id == 0)
+			var id = $scope.novaNota.id ? $scope.novaNota.id : null;
+			//var nota = new notaResource({id: id}); //Instancia o resource com o id da nota						
+			//nota.titulo = $scope.novaNota.titulo;
+			//nota.descricao = $scope.novaNota.descricao;
+			//nota.$save();			
+					
+			if(id == null)
 			{
-				//$scope.notas.push(notaSalva);
-				atualizarLista();
+				notaService.salvarNota($scope.novaNota).then(atualizarLista);				
+			}
+			else {
+				notaService.salvarNota($scope.novaNota);
 			}
 						
 			$scope.limparNota();
@@ -38,7 +39,8 @@
 		};
 				
 		$scope.deletarNota = function(id) {
-			notaResource.remove({id: id}); //Remove do banco
+			//notaResource.remove({id: id}); //Remove do banco
+			notaService.deletarNota(id);
 			
 			//Remove o elemento da pagina 
 			//(a navegacao fica mais fluida quando nao atualiza a lista, alem de nao precisar consultar novamente no banco)
@@ -50,13 +52,11 @@
 				}
 			}						
 			$scope.notas.splice(index, 1);
-			
-			//atualizarLista();
 		};
 		
 		//Atualiza o array de notas consultando o web service
-		function atualizarLista() {
-			$scope.notas = notaResource.query();
+		function atualizarLista(data) {
+			$scope.notas.push(data);
 		}
 	}
 }());

@@ -16,12 +16,20 @@ public class NotaServiceImpl implements NotaService {
 	NotaRepository notaRepository;
 	
 	@Transactional
-	public Nota save(Nota nota) {
+	public Nota salvar(Nota nota) {
 		return notaRepository.save(nota);
 	}
 
 	public List<Nota> listarNotas() {
 		return notaRepository.findAll();
+	}
+	
+	public Nota buscarPorId(Long id) {
+		return notaRepository.findOne(id);
+	}
+	
+	public void deletar(Long id) {
+		notaRepository.delete(id);
 	}
 
 }

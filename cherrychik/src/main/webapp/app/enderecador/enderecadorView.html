@@ -37,6 +37,9 @@
 	</div>
 </div>
 <!-- Fim do modal -->
+<div ng-repeat="nota in notas">
+	{{nota.id}} | {{nota.titulo}} | {{nota.descricao}}	
+</div>
 
 <!-- Lista de endereçadores -->
 <div class="enderecador" ng-repeat="enderecador in enderecadores">

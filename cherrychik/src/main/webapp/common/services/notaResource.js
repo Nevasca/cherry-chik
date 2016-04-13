@@ -5,7 +5,7 @@
 		.factory("notaResource", ["$resource", notaResource]);
 	
 	function notaResource($resource) {
-		return $resource("/api/notas/:id");		
+		return $resource("http://localhost:8080/cherrychik/api/notas/:id");
 	}
 	
 }());

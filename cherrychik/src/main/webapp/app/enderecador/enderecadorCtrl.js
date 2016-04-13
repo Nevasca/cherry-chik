@@ -1,9 +1,9 @@
 (function(){
 	angular
 		.module("gestaoCherry")
-		.controller("EnderecadorCtrl", ["$scope", "$sce", EnderecadorCtrl]);
+		.controller("EnderecadorCtrl", ["$scope", "$sce", "notaService", EnderecadorCtrl]);
 	
-	function EnderecadorCtrl($scope, $sce) {
+	function EnderecadorCtrl($scope, $sce, notaService) {							
 		
 		$scope.novoEnderecador = {endereco: "", tipo: "PAC"};			
 		

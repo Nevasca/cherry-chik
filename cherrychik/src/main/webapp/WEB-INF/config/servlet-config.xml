@@ -12,8 +12,10 @@
 	
 	<context:component-scan base-package="br.com.nixtor.controller"></context:component-scan>
 	
-	<mvc:resources location="resources" mapping="/resources/**"></mvc:resources>
+	<mvc:resources location="/resources/" mapping="/resources/**"></mvc:resources>
+	<mvc:resources location="/app/" mapping="/app/**"></mvc:resources>
+	<mvc:resources location="/common/" mapping="/common/**"></mvc:resources>
 	
-	<bean class="org.springframework.web.servlet.view.InternalResourceViewResolver" p:prefix="/WEB-INF/views/" p:suffix=".jsp"></bean>
+	<bean class="org.springframework.web.servlet.view.InternalResourceViewResolver" p:prefix="/WEB-INF/views/" p:suffix=".jsp" p:order="1"></bean>
 
 </beans>
