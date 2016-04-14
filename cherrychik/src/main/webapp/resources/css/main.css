@@ -13,3 +13,7 @@
 	padding-left: 20px;	
 	z-index: 2;
 }
+
+textarea {
+	resize: vertical;
+}

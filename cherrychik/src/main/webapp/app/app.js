@@ -29,6 +29,17 @@
 							url: "/enderecador",
 							templateUrl: "app/enderecador/enderecadorView.html",
 							controller: "EnderecadorCtrl"
+						})
+						.state("descricao", {
+							url: "/descricao",
+							templateUrl: "app/descricao/descricaoView.html",
+							controller: "DescricaoCtrl",
+							resolve: {
+								descricaoService: "descricaoService",
+								descricoes: function(descricaoService) {
+									return descricaoService.listarDescricoes();
+								}
+							}
 						});
 		
 	}]);

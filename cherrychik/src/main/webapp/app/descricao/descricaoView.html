@@ -1,0 +1,102 @@
+<div class="page-header">
+	<h1>Descrição</h1>
+	<p>Crie um template de descrição para utilizar no cadastro de produtos</p>
+</div>
+
+<!-- Form para cadastrar/alterar e o preview -->
+<div class="row">
+	<div class="col-md-6">
+		<h3>Nova descrição</h3>
+		<form>
+			<div class="form-group">
+				<label for="inputNomeDescricao">Nome</label>
+				<input id="inputNomeDescricao" class="form-control" type="text" placeholder="Blazer" ng-model="novaDescricao.nome">
+			</div>
+			<div class="form-group">
+				<label for="inputTemplateDescricao">Template</label>
+				<p >A paleta de cores será adicionada mais tarde, não se preocupe com ela agora</p>
+				<textarea id="inputTemplateDescricao" class="form-control" rows="10" ng-model="novaDescricao.template"
+					placeholder="- Insira uma descrição bem legal para o Blazer, mesmo que não tenhamos um"></textarea>
+			</div>
+			<div class="form-group">
+				<button class="btn btn-default" style="width: 50px; margin-right: 10px" ng-click="limparDescricao()" data-toggle="tooltip" title="Limpar Descricao"><span class="glyphicon glyphicon-trash"></span></button>
+				<button class="btn btn-primary" style="margin-right: 10px" ng-click="salvarDescricao()"><span class="glyphicon glyphicon-ok"></span> Salvar</button>
+			</div>
+		</form>
+	</div>
+	<div class="col-md-6">		
+		<h3>Como vai ficar</h3>
+		<div ng-bind-html="novaDescricao.template"></div>
+	</div>
+</div>
+<!-- Fim do Form -->
+
+<!-- Dicas para formatar o template -->
+<div class="row">
+	<div class="well">
+		<h4>Como personalizo o template?</h4>
+		<p>Insira |*ESTAMPA*| para preencher com o nome da estampa posteriormente, no menu <a class="btn-link">Montar Descrição</a></p>
+		<div class="row">
+			<div class="col-md-6">
+				<div class="well" style="background-color: #fcfcfc">Estampa |*ESTAMPA*| em Silkscreen</div>
+			</div>
+			<div class="col-md-6">
+				<div class="well" style="background-color: #fcfcfc">Estampa Carreta Furacão em Silkscreen</div>
+			</div>
+		</div>			
+	</div>	
+</div>
+<div class="row">
+	<div class="well">
+		<h4>Como formato o template?</h4>
+		<p>Você pode utilizar as seguintes marcações:</p>
+		<b>&lt;b&gt;texto em negrito&lt;b&gt;</b><br>
+		<i>&lt;i&gt;texto em itálico&lt;i&gt;</i><br>
+	</div>
+</div>
+<!-- Fim Dicas -->
+
+<!-- Tabela com as descricoes ja cadastradas -->
+<div class="row" style="margin-top: 30px">
+	<table class="table table-striped">
+		<thead>
+			<tr>
+				<th class="col-md-1">#</th>
+				<th class="col-md-3">Nome</th>
+				<th class="col-md-6">Template</th>
+				<th class="col-md-2">Ações</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr ng-repeat="descricao in descricoes">
+				<td>{{descricao.id}}</td>
+				<td><a class="btn btn-link" data-toggle="modal" data-target="#viewDescricao" ng-click="visualizarDescricao(descricao)">{{descricao.nome}}</a></td>
+				<td style="font-style: italic">{{descricao.template | limitTo:"80"}}<span ng-if="descricao.template.length > 80">...</span></td>
+				<td>										
+					<a class="btn btn-default" ng-click="deletarDescricao(descricao.id)"><span class="glyphicon glyphicon-remove"></span> Deletar</a>
+					<button class="btn btn-default" ng-click="editarDescricao(descricao)">Editar</button>
+				</td>
+			</tr>
+		</tbody>
+	</table>
+</div>
+<!-- Fim da tabela -->
+
+<!-- Modal para visualizar uma descrição -->
+<div class="modal fade" id="viewDescricao" tabindex="-1" role="dialog" aria-labelbody="viewDescricaoLabel">
+	<div class="modal-dialog" role="document">
+		<div class="modal-content">
+			<div class="modal-header">
+				<button class="close" data-dismiss="modal" aria-label="Fechar"><span aria-hidden="true">&times;</span></button>
+				<h4 class="modal-title" id="viewDescricaoLabel">{{viewDescricao.nome}}</h4>
+			</div>
+			<div class="modal-body" ng-bind-html="viewDescricao.template">
+			</div>
+<!-- 			<div class="modal-footer"> -->
+<!-- 				<button class="btn btn-default" style="width: 50px; margin-right: 10px" ng-click="limparNota()" data-toggle="tooltip" title="Limpar Nota"><span class="glyphicon glyphicon-trash"></span></button> -->
+<!-- 				<button class="btn btn-primary" style="margin-right: 10px" ng-click="salvarNota()"><span class="glyphicon glyphicon-ok"></span> Salvar</button> -->
+<!-- 			</div> -->
+		</div>
+	</div>
+</div>
+<!-- Fim do modal -->

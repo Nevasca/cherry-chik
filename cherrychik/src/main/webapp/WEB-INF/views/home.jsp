@@ -29,10 +29,12 @@
 <script type="text/javascript" src="common/services/notaResource.js"></script>
 <script type="text/javascript" src="common/services/notaService.js"></script>
 <script type="text/javascript" src="common/services/enderecadorService.js"></script>
+<script type="text/javascript" src="common/services/descricaoService.js"></script>
 
 <!-- Controllers -->
 <script type="text/javascript" src="app/notas/notasCtrl.js"></script>
 <script type="text/javascript" src="app/enderecador/enderecadorCtrl.js"></script>
+<script type="text/javascript" src="app/descricao/descricaoCtrl.js"></script>
 
 </head>
 <body ng-app="gestaoCherry">
@@ -42,6 +44,7 @@
 			<ul class="nav navbar-nav">
 				<li><a ui-sref="notas"><span class="glyphicon glyphicon-pencil"></span> Notas</a></li>
 				<li><a ui-sref="enderecador"><span class="glyphicon glyphicon-send"></span> Endereçador</a></li>				
+				<li><a ui-sref="descricao"><span class="glyphicon glyphicon-list"></span> Descrição</a></li>
 			</ul>
 		</div>
 	</nav>

@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import br.com.nixtor.model.Produto;
 import br.com.nixtor.repository.ProdutoRepository;
@@ -14,6 +15,7 @@ public class ProdutoServiceImpl implements ProdutoService {
 	@Autowired
 	private ProdutoRepository produtoRepository;
 	
+	@Transactional
 	public Produto cadastrar(Produto produto) {
 		return produtoRepository.save(produto);
 	}
