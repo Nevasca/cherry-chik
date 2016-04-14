@@ -40,7 +40,18 @@
 									return descricaoService.listarDescricoes();
 								}
 							}
-						});
+						})
+						.state("descricaoMontar", {
+							url: "/descricao.montar",
+							templateUrl: "app/descricao/descricaoMontarView.html",
+							controller: "DescricaoMontarCtrl",
+							resolve: {
+								descricaoService: "descricaoService",
+								descricoes: function(descricaoService) {
+									return descricaoService.listarDescricoes();
+								}
+							}
+						});	
 		
 	}]);
 	

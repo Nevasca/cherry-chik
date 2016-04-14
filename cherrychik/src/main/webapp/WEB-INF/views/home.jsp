@@ -35,6 +35,7 @@
 <script type="text/javascript" src="app/notas/notasCtrl.js"></script>
 <script type="text/javascript" src="app/enderecador/enderecadorCtrl.js"></script>
 <script type="text/javascript" src="app/descricao/descricaoCtrl.js"></script>
+<script type="text/javascript" src="app/descricao/descricaoMontarCtrl.js"></script>
 
 </head>
 <body ng-app="gestaoCherry">
@@ -42,9 +43,20 @@
 		<div class="container-fluid">
 			<a class="navbar-brand" ui-sref="home">Gestão Cherry</a>
 			<ul class="nav navbar-nav">
-				<li><a ui-sref="notas"><span class="glyphicon glyphicon-pencil"></span> Notas</a></li>
-				<li><a ui-sref="enderecador"><span class="glyphicon glyphicon-send"></span> Endereçador</a></li>				
-				<li><a ui-sref="descricao"><span class="glyphicon glyphicon-list"></span> Descrição</a></li>
+				<li><a ui-sref="notas">Notas</a></li>
+				
+				<li><a ui-sref="enderecador">Endereçador</a></li>
+				
+				<li class="dropdown">
+					<a href="" class="dropdown-toggle" data-toggle="dropdown" role="button" ari-haspopup="true" aria-expanded="false">
+						Descrição <span class="caret"></span>
+					</a>
+					<ul class="dropdown-menu">
+						<li><a ui-sref="descricao">Cadastrar Template</a></li>
+						<li><a ui-sref="descricaoMontar">Montar Descrição</a></li>
+					</ul>
+				</li>
+				
 			</ul>
 		</div>
 	</nav>

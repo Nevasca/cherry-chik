@@ -1,0 +1,36 @@
+<div class="page-header">
+	<h1>Montar Descrição</h1>
+	<p>Escolha um template e as informações adicionais</p>
+</div>
+
+<!-- Form para cadastrar/alterar e o preview -->
+<div class="row">
+	<div class="col-md-6">
+		<h3>Nova descrição</h3>
+		<form>
+			<div class="form-group">
+				<label for="selectTemplateDescricao">Template</label>
+				<select id="selectTemplateDescricao" class="form-control" ng-model="novaDescricao.index">
+					<option ng-repeat="descricao in descricoes" value="{{$index}}">{{descricao.nome}}</option>
+				</select>
+			</div>
+			<div class="form-group">
+				<label for="inputEstampa">Estampa</label>
+				<input id="inputEstampa" class="form-control" ng-model="novaDescricao.estampa" placeholder="Nome da estampa, caso necessário">
+			</div>
+		</form>
+		<div class="row">
+			<div ng-repeat="cor in cores" style="float: left; margin-right: 10px;">
+				<div style="height: 50px; width: 50px; background-color: #{{cor.codigo}}"></div>
+				{{cor.nome}}
+			</div>
+		</div>
+	</div>
+	
+	
+	<div class="col-md-6">		
+		<h3>Como vai ficar</h3>
+		<div ng-bind-html="descricoes[novaDescricao.index].template.replace('|*ESTAMPA*|', novaDescricao.estampa)"></div>
+	</div>
+</div>
+<!-- Fim do Form -->

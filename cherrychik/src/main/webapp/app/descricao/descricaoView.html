@@ -74,7 +74,7 @@
 				<td style="font-style: italic">{{descricao.template | limitTo:"80"}}<span ng-if="descricao.template.length > 80">...</span></td>
 				<td>										
 					<a class="btn btn-default" ng-click="deletarDescricao(descricao.id)"><span class="glyphicon glyphicon-remove"></span> Deletar</a>
-					<button class="btn btn-default" ng-click="editarDescricao(descricao)">Editar</button>
+					<button class="btn btn-primary" ng-click="editarDescricao(descricao)"><span class="glyphicon glyphicon-pencil"></span> Editar</button>
 				</td>
 			</tr>
 		</tbody>
@@ -90,12 +90,7 @@
 				<button class="close" data-dismiss="modal" aria-label="Fechar"><span aria-hidden="true">&times;</span></button>
 				<h4 class="modal-title" id="viewDescricaoLabel">{{viewDescricao.nome}}</h4>
 			</div>
-			<div class="modal-body" ng-bind-html="viewDescricao.template">
-			</div>
-<!-- 			<div class="modal-footer"> -->
-<!-- 				<button class="btn btn-default" style="width: 50px; margin-right: 10px" ng-click="limparNota()" data-toggle="tooltip" title="Limpar Nota"><span class="glyphicon glyphicon-trash"></span></button> -->
-<!-- 				<button class="btn btn-primary" style="margin-right: 10px" ng-click="salvarNota()"><span class="glyphicon glyphicon-ok"></span> Salvar</button> -->
-<!-- 			</div> -->
+			<div class="modal-body" ng-bind-html="viewDescricao.template"></div>
 		</div>
 	</div>
 </div>
