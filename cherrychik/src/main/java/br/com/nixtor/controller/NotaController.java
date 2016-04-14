@@ -32,8 +32,6 @@ public class NotaController {
 	public ResponseEntity<Nota> salvarNota(@RequestBody Nota nota) {		
 
 		Nota notaSalva = notaService.salvar(nota);
-		notaService.salvar(nota);
-		notaService.salvar(nota);
 		return new ResponseEntity<Nota>(notaSalva, HttpStatus.CREATED);
 	}
 	
