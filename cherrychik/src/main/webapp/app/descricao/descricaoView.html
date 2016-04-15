@@ -35,7 +35,7 @@
 <div class="row">
 	<div class="well">
 		<h4>Como personalizo o template?</h4>
-		<p>Insira |*ESTAMPA*| para preencher com o nome da estampa posteriormente, no menu <a class="btn-link">Montar Descrição</a></p>
+		<p>Insira |*ESTAMPA*| para preencher com o nome da estampa posteriormente, no menu <a class="btn-link" ui-sref="descricaoMontar">Montar Descrição</a></p>
 		<div class="row">
 			<div class="col-md-6">
 				<div class="well" style="background-color: #fcfcfc">Estampa |*ESTAMPA*| em Silkscreen</div>
@@ -71,10 +71,10 @@
 			<tr ng-repeat="descricao in descricoes">
 				<td>{{descricao.id}}</td>
 				<td><a class="btn btn-link" data-toggle="modal" data-target="#viewDescricao" ng-click="visualizarDescricao(descricao)">{{descricao.nome}}</a></td>
-				<td style="font-style: italic">{{descricao.template | limitTo:"80"}}<span ng-if="descricao.template.length > 80">...</span></td>
+				<td style="font-style: italic">{{descricao.template | limitTo:"75"}}<span ng-if="descricao.template.length > 75">...</span></td>
 				<td>										
-					<a class="btn btn-default" ng-click="deletarDescricao(descricao.id)"><span class="glyphicon glyphicon-remove"></span> Deletar</a>
 					<button class="btn btn-primary" ng-click="editarDescricao(descricao)"><span class="glyphicon glyphicon-pencil"></span> Editar</button>
+					<a class="btn btn-default" ng-click="deletarDescricao(descricao.id)"><span class="glyphicon glyphicon-remove"></span> Deletar</a>					
 				</td>
 			</tr>
 		</tbody>
