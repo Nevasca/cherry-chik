@@ -25,10 +25,21 @@
 								}
 							}
 						})
-						.state("enderecador", {
-							url: "/enderecador",
+						.state("enderecadorAdicionar", {
+							url: "/enderecadorAdicionar",
 							templateUrl: "app/enderecador/enderecadorView.html",
 							controller: "EnderecadorCtrl"
+						})
+						.state("enderecadorConsultar", {
+							url: "/enderecadorConsultar",
+							templateUrl: "app/enderecador/enderecadorConsultaView.html",
+							controller: "EnderecadorConsultaCtrl",
+							resolve: {
+								enderecadorService: "enderecadorService",
+								enderecadores: function(enderecadorService) {
+									return enderecadorService.listarEnderecadores();
+								}
+							}
 						})
 						.state("descricao", {
 							url: "/descricao",

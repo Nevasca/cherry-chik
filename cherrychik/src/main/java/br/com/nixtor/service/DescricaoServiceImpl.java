@@ -25,7 +25,7 @@ public class DescricaoServiceImpl implements DescricaoService {
 	}
 
 	public void excluir(Long id) {
-		descricaoRepository.delete(id);
+		descricaoRepository.delete(id);		
 	}
 
 }

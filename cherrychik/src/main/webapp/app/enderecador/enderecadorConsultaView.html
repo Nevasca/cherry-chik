@@ -1,0 +1,68 @@
+<div class="page-header" id="editarNota">
+	<h1>
+		Endereçadores
+	</h1>
+	Lista dos endereçadores criados. Utilize o formulário para filtrar	
+</div>
+
+<!-- Form para filtrar os endereçadores -->
+<div class="row">
+	<form class="form-inline">
+		<div class="form-group">
+			<input type="text" class="form-control" placeholder="Número do pedido" ng-model="buscaEnderecador.pedido">
+		</div>
+		<button class="btn btn-primary" ng-click="filtrarEnderecador()"><span class="glyphicon glyphicon-search"></span> Pesquisar</button>		
+	</form>
+</div>
+<!-- Fim do form -->
+
+
+<!-- Tabela com os enderecadores ja cadastrados -->
+<div class="row" style="margin-top: 30px">
+	<table class="table table-striped">
+		<thead>
+			<tr>
+				<th class="col-md-1">#</th>
+				<th class="col-md-1">Pedido</th>
+				<th class="col-md-1">Tipo</th>
+				<th class="col-md-2">Data Inserção</th>
+				<th class="col-md-5">Endereço</th>
+				<th class="col-md-2">Ações</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr ng-repeat="enderecador in enderecadores">
+				<td>{{enderecador.id}}</td>
+				<td>{{enderecador.pedido}}</td>
+				<td>{{enderecador.tipo}}</td>
+				<td>{{enderecador.data | date:'dd/MM/yyyy'}}</td>				
+				<td style="font-style: italic">
+					<a class="btn btn-link" data-toggle="modal" data-target="#viewEnderecador" ng-click="visualizarEnderecador(enderecador)">
+						{{enderecador.endereco | limitTo:"50"}}<span ng-if="enderecador.endereco.length > 50">...</span>
+					</a>
+				</td>
+				<td>					
+					<a class="btn btn-default" ng-click="deletarEnderecador(enderecador.id)"><span class="glyphicon glyphicon-remove"></span> Deletar</a>					
+				</td>
+			</tr>
+		</tbody>
+	</table>
+</div>
+<!-- Fim da tabela -->
+
+<!-- Modal para visualizar um enderecador -->
+<div class="modal fade" id="viewEnderecador" tabindex="-1" role="dialog" aria-labelbody="viewEnderecadorLabel">
+	<div class="modal-dialog" role="document">
+		<div class="modal-content">
+			<div class="modal-header">
+				<button class="close" data-dismiss="modal" aria-label="Fechar"><span aria-hidden="true">&times;</span></button>
+				<h4 class="modal-title" id="viewEnderecadorLabel">Endereçador #{{viewEnderecador.id}}</h4>
+			</div>
+			<div class="enderecador" style="margin-left: 35px;">
+				<p ng-bind-html="viewEnderecador.endereco"></p>
+				<img ng-src="/cherrychik/resources/images/enderecador{{viewEnderecador.tipo}}.png" height="350px">
+			</div>
+		</div>
+	</div>
+</div>
+<!-- Fim do modal -->

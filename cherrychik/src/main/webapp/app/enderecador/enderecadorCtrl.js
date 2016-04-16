@@ -13,7 +13,9 @@
 		};
 		
 		$scope.addEnderecador = function() {
-			$scope.novoEnderecador.endereco = $sce.trustAsHtml($scope.novoEnderecador.endereco).toString();
+			$scope.novoEnderecador.endereco = $sce.trustAsHtml($scope.novoEnderecador.endereco).toString();						
+//			$scope.novoEnderecador.data = new Date();
+//			console.log($scope.novoEnderecador.data);
 			
 			var id = $scope.novoEnderecador.id ? $scope.novoEnderecador.id : null;			
 			if(id == null) {
@@ -31,8 +33,9 @@
 			$scope.novoEnderecador = enderecador;
 		};
 		
-		$scope.deletarEnderecador = function(index) {													
-			$scope.enderecadores.splice(index, 1);				
+		$scope.deletarEnderecador = function(index) {
+			enderecadorService.deletarEnderecador($scope.enderecadores[index].id);
+			$scope.enderecadores.splice(index, 1);			
 		};
 		
 		$scope.$watch('novoEnderecador.endereco', function(){

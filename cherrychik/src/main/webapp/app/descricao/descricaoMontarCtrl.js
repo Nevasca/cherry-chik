@@ -31,7 +31,16 @@
 			}
 			
 			cor.selecionada = !cor.selecionada;
-		}		
+		}
+		
+		//Limpa a selecao de cores
+		$scope.limparCores = function() {
+			for(var i = 0; i < $scope.coresSelecionadas.length; i++) {
+				$scope.coresSelecionadas[i].selecionada = false;				
+			}
+			
+			$scope.coresSelecionadas = [];
+		}
 	}
 	
 }());

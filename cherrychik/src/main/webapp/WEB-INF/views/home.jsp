@@ -35,6 +35,7 @@
 <!-- Controllers -->
 <script type="text/javascript" src="app/notas/notasCtrl.js"></script>
 <script type="text/javascript" src="app/enderecador/enderecadorCtrl.js"></script>
+<script type="text/javascript" src="app/enderecador/enderecadorConsultaCtrl.js"></script>
 <script type="text/javascript" src="app/descricao/descricaoCtrl.js"></script>
 <script type="text/javascript" src="app/descricao/descricaoMontarCtrl.js"></script>
 
@@ -46,7 +47,15 @@
 			<ul class="nav navbar-nav">
 				<li><a ui-sref="notas">Notas</a></li>
 				
-				<li><a ui-sref="enderecador">Endereçador</a></li>
+				<li class="dropdown">
+					<a href="" class="dropdown-toggle" data-toggle="dropdown" role="button" ari-haspopup="true" aria-expanded="false">
+						Endereçador <span class="caret"></span>
+					</a>
+					<ul class="dropdown-menu">
+						<li><a ui-sref="enderecadorAdicionar"><span class="glyphicon glyphicon-plus"></span> Adicionar</a></li>
+						<li><a ui-sref="enderecadorConsultar"><span class="glyphicon glyphicon-search"></span> Consultar</a></li>
+					</ul>
+				</li>
 				
 				<li class="dropdown">
 					<a href="" class="dropdown-toggle" data-toggle="dropdown" role="button" ari-haspopup="true" aria-expanded="false">

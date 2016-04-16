@@ -22,7 +22,9 @@
 		
 		<!-- Paleta de cores para selecao -->
 		<div class="row">
-			<h3>Cores disponíveis</h3>
+			<h3>Cores disponíveis
+				<a class="btn btn-link" ng-click="limparCores()">Limpar</a>
+			</h3>
 			<div ng-repeat="cor in cores" style="float: left; margin-right: 10px;">
 				<div class="cor-circulo" 
 					style="cursor: pointer; background-color: #{{cor.codigo}}" 
