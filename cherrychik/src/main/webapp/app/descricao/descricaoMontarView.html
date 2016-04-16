@@ -19,12 +19,21 @@
 				<input id="inputEstampa" class="form-control" ng-model="novaDescricao.estampa" placeholder="Nome da estampa, caso necessário">
 			</div>
 		</form>
+		
+		<!-- Paleta de cores para selecao -->
 		<div class="row">
+			<h3>Cores disponíveis</h3>
 			<div ng-repeat="cor in cores" style="float: left; margin-right: 10px;">
-				<div style="height: 50px; width: 50px; background-color: #{{cor.codigo}}" ng-click="toggleCor(cor)"></div>
-				{{cor.nome}}
+				<div class="cor-circulo" 
+					style="cursor: pointer; background-color: #{{cor.codigo}}" 
+					ng-click="toggleCor(cor)"
+					title="{{cor.nome}}"
+					ng-class="{'cor-selecionada' : cor.selecionada}">
+				</div>
 			</div>
 		</div>
+		<!-- Fim da paleta -->
+		
 	</div>
 	
 	
@@ -36,9 +45,9 @@
 		</h3>
 		<div id="templateDescricao">	
 			<div ng-bind-html="novaDescricao.template.replace('|*ESTAMPA*|', novaDescricao.estampa)"></div>
-			<div ng-repeat="cor in coresSelecionadas" style="float: left; margin-right: 10px;">
-				<div style="height: 50px; width: 50px; background-color: #{{cor.codigo}}"></div>
-				{{cor.nome}}
+			<div ng-repeat="cor in coresSelecionadas" style="margin-right: 10px; width: 100%;">
+				<div class="cor-circulo" style="border: 2px #f8f8f8 solid; background-color: #{{cor.codigo}}"></div>
+				<span style="vertical-align: 25px;">{{cor.nome}}</span>
 			</div>
 		</div>		
 	</div>

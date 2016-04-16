@@ -17,3 +17,19 @@
 textarea {
 	resize: vertical;
 }
+
+.cor-circulo {
+	display: inline-block;
+	border-radius:50%; 
+	height: 50px;
+	width: 50px;
+	margin: 5px;
+	border: 1px #000 solid;
+}
+
+.cor-selecionada {
+	border-radius:0;
+/* 	border: 8px #c700ff solid;	 */
+/* 	height: 40px; */
+/* 	width: 40px; */
+}

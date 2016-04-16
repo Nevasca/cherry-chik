@@ -2,27 +2,16 @@
 	
 	angular
 		.module("gestaoCherry")
-		.controller("DescricaoMontarCtrl", ["$scope", "descricoes", "$sce", DescricaoMontarCtrl]);
+		.controller("DescricaoMontarCtrl", ["$scope", "descricoes", "$sce", "corService", DescricaoMontarCtrl]);
 	
-	function DescricaoMontarCtrl($scope, descricoes, $sce) {
+	function DescricaoMontarCtrl($scope, descricoes, $sce, corService) {
 		
 		//Para copiar o descricao da nota quando clicar em um botao com a classe abaixo aplicada
 		var clipboard = new Clipboard(".copiar");
 		
 		$scope.descricoes = descricoes;
 		$scope.novaDescricao = {};
-		
-		$scope.cores = [{
-				nome: "Rosa",
-				codigo: "FF008E",
-				selecionada: false
-			},
-			{
-				nome: "Preto",
-				codigo: "000000",
-				selecionada: false
-			}		
-		];
+		$scope.cores = corService.getPaletaCores();
 		
 		$scope.coresSelecionadas = [];
 		

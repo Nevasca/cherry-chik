@@ -30,6 +30,7 @@
 <script type="text/javascript" src="common/services/notaService.js"></script>
 <script type="text/javascript" src="common/services/enderecadorService.js"></script>
 <script type="text/javascript" src="common/services/descricaoService.js"></script>
+<script type="text/javascript" src="common/services/corService.js"></script>
 
 <!-- Controllers -->
 <script type="text/javascript" src="app/notas/notasCtrl.js"></script>
