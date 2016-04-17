@@ -1,0 +1,85 @@
+<div class="page-header">
+	<h1>
+		Novo Pedido
+	</h1>	
+</div>
+
+<div class="panel panel-default">
+	<div class="panel-heading">
+		<button class="btn btn-primary" data-toggle="modal" data-target="#addItem"><span class="glyphicon glyphicon-plus"></span> Adicionar Produto</button>
+	</div>
+	<div class="panel-body">
+	
+		<!-- Tabela com os produtos adicionados ao pedido -->
+		<div class="row">
+			<table class="table table-striped">
+				<thead>
+					<tr>						
+						<th class="col-md-2">Ações</th>
+						<th class="col-md-4">Nome</th>
+						<th class="col-md-1">Quantidade</th>
+						<th class="col-md-2">Preço Unitário</th>						
+						<th class="col-md-3">Subtotal</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr ng-repeat="item in itens">
+						<td>					
+							<a class="btn btn-default" ng-click="editarItem($index)"><span class="glyphicon glyphicon-pencil"></span></a>
+							<a class="btn btn-default" ng-click="removerItem($index)"><span class="glyphicon glyphicon-minus"></span></a>					
+						</td>						
+						<td>{{item.nome}}</td>
+						<td>{{item.quantidade}}</td>
+						<td>{{item.preco | currency:"R$ "}}</td>
+						<td>{{calcularSubtotal(item) | currency:"R$ "}}</td>	
+					</tr>
+				</tbody>
+			</table>
+		</div>
+		<!-- Fim da tabela -->
+		
+		<div class="row">
+			<div class="col-md-3">
+				<div class="well">
+					<span style="font-size: 20px">Total do pedido:</span>
+				</div>
+			</div>
+			<div class="col-md-3">
+				<div class="well">
+					<span style="font-size: 20px; font-weight: bold;">{{calcularTotal() | currency:"R$ "}}</span>
+				</div>
+			</div>
+		</div>
+		
+	</div>
+</div>
+
+<!-- Modal para adicionar um item ao pedido -->
+<div class="modal fade" id="addItem" tabindex="-1" role="dialog" aria-labelbody="addItemLabel">
+	<div class="modal-dialog" role="document">
+		<div class="modal-content">
+			<div class="modal-header">
+				<button class="close" data-dismiss="modal" aria-label="Fechar"><span aria-hidden="true">&times;</span></button>
+				<h4 class="modal-title" id="addItemLabel">Novo Item</h4>
+			</div>
+			<div class="modal-body">
+				<form>
+					<div class="form-group">
+						<label for="selectProduto">Produto</label>
+						<select id="selectProduto" class="form-control" ng-model="novoItem.index" ng-change="mudarItem()">
+							<option ng-repeat="produto in produtos" value="{{$index}}">{{produto.nome}}</option>
+						</select>						
+					</div>
+					<div class="form-group">
+						<label for="inputQuantidade">Quantidade</label>
+						<input type="number" class="form-control" ng-model="novoItem.quantidade">						
+					</div>
+				</form>
+			</div>
+			<div class="modal-footer">				
+				<button class="btn btn-primary" style="margin-right: 10px" ng-click="addItem()"><span class="glyphicon glyphicon-ok"></span> Adicionar</button>
+			</div>
+		</div>
+	</div>
+</div>
+<!-- Fim do modal -->

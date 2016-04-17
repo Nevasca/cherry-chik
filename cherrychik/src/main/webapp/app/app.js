@@ -85,6 +85,17 @@
 									return produtoService.listarProdutos();
 								}
 							}
+						})
+						.state("pedidoNovo", {
+							url: "/pedidoNovo",
+							templateUrl: "app/pedido/pedidoNovoView.html",
+							controller: "PedidoNovoCtrl",
+							resolve: {
+								produtoService: "produtoService",
+								produtos: function(produtoService) {
+									return produtoService.listarProdutos();
+								}
+							}
 						});	
 		
 	}]);

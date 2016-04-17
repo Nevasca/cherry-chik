@@ -41,6 +41,7 @@
 <script type="text/javascript" src="app/descricao/descricaoMontarCtrl.js"></script>
 <script type="text/javascript" src="app/produto/produtoCadastroCtrl.js"></script>
 <script type="text/javascript" src="app/produto/produtoConsultaCtrl.js"></script>
+<script type="text/javascript" src="app/pedido/pedidoNovoCtrl.js"></script>
 
 </head>
 <body ng-app="gestaoCherry">
@@ -77,6 +78,16 @@
 					<ul class="dropdown-menu">
 						<li><a ui-sref="produtoCadastro({id: 0})"><span class="glyphicon glyphicon-plus"></span> Adicionar</a></li>
 						<li><a ui-sref="produtoConsulta"><span class="glyphicon glyphicon-search"></span> Consultar</a></li>
+					</ul>
+				</li>
+				
+				<li class="dropdown">
+					<a href="" class="dropdown-toggle" data-toggle="dropdown" role="button" ari-haspopup="true" aria-expanded="false">
+						Pedido <span class="caret"></span>
+					</a>
+					<ul class="dropdown-menu">
+						<li><a ui-sref="pedidoNovo"><span class="glyphicon glyphicon-plus"></span> Novo</a></li>
+<!-- 						<li><a ui-sref="produtoConsulta"><span class="glyphicon glyphicon-search"></span> Consultar</a></li> -->
 					</ul>
 				</li>
 				
