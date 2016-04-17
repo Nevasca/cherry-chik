@@ -31,6 +31,7 @@
 <script type="text/javascript" src="common/services/enderecadorService.js"></script>
 <script type="text/javascript" src="common/services/descricaoService.js"></script>
 <script type="text/javascript" src="common/services/corService.js"></script>
+<script type="text/javascript" src="common/services/produtoService.js"></script>
 
 <!-- Controllers -->
 <script type="text/javascript" src="app/notas/notasCtrl.js"></script>
@@ -38,6 +39,8 @@
 <script type="text/javascript" src="app/enderecador/enderecadorConsultaCtrl.js"></script>
 <script type="text/javascript" src="app/descricao/descricaoCtrl.js"></script>
 <script type="text/javascript" src="app/descricao/descricaoMontarCtrl.js"></script>
+<script type="text/javascript" src="app/produto/produtoCadastroCtrl.js"></script>
+<script type="text/javascript" src="app/produto/produtoConsultaCtrl.js"></script>
 
 </head>
 <body ng-app="gestaoCherry">
@@ -64,6 +67,16 @@
 					<ul class="dropdown-menu">
 						<li><a ui-sref="descricao">Cadastrar Template</a></li>
 						<li><a ui-sref="descricaoMontar">Montar Descrição</a></li>
+					</ul>
+				</li>
+				
+				<li class="dropdown">
+					<a href="" class="dropdown-toggle" data-toggle="dropdown" role="button" ari-haspopup="true" aria-expanded="false">
+						Produto <span class="caret"></span>
+					</a>
+					<ul class="dropdown-menu">
+						<li><a ui-sref="produtoCadastro({id: 0})"><span class="glyphicon glyphicon-plus"></span> Adicionar</a></li>
+						<li><a ui-sref="produtoConsulta"><span class="glyphicon glyphicon-search"></span> Consultar</a></li>
 					</ul>
 				</li>
 				

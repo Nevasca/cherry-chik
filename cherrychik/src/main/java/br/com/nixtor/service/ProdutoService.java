@@ -9,4 +9,5 @@ public interface ProdutoService {
 	Produto cadastrar(Produto produto);
 	List<Produto> listarProdutos();
 	void excluir(Long id);
+	Produto buscarPorId(Long id);
 }

@@ -37,4 +37,10 @@ public class ProdutoController {
 		produtoService.excluir(id);
 		return new ResponseEntity<Void>(HttpStatus.OK);
 	}
+	
+	@RequestMapping(value = "/api/produto/{id}", method = RequestMethod.GET)
+	public ResponseEntity<Produto> buscarProdutoId(@PathVariable("id") Long id) {		
+		Produto produto = produtoService.buscarPorId(id);
+		return new ResponseEntity<Produto>(produto, HttpStatus.OK);
+	}
 }

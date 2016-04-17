@@ -62,6 +62,29 @@
 									return descricaoService.listarDescricoes();
 								}
 							}
+						})
+						.state("produtoCadastro", {
+							url: "/produtoCadastro/:id",
+							templateUrl: "app/produto/produtoCadastroView.html",
+							controller: "ProdutoCadastroCtrl",
+							resolve : {
+								produtoService: "produtoService",
+								produto: function(produtoService, $stateParams) {
+									var id = $stateParams.id;						
+									return produtoService.buscarPorId(id);
+								} 
+							}
+						})
+						.state("produtoConsulta", {
+							url: "/produtoConsulta",
+							templateUrl: "app/produto/produtoConsultaView.html",
+							controller: "ProdutoConsultaCtrl",
+							resolve: {
+								produtoService: "produtoService",
+								produtos: function(produtoService) {
+									return produtoService.listarProdutos();
+								}
+							}
 						});	
 		
 	}]);

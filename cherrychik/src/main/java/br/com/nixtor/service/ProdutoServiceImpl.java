@@ -28,4 +28,8 @@ public class ProdutoServiceImpl implements ProdutoService {
 		produtoRepository.delete(id);
 	}
 
+	public Produto buscarPorId(Long id) {
+		return produtoRepository.findOne(id);
+	}
+
 }
