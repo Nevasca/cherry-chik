@@ -67,6 +67,14 @@
 		<artifactId>jackson-databind</artifactId>
 		<version>2.7.3</version>
 	</dependency>
+	
+	<!-- API para mandar email -->
+	<dependency>
+		<groupId>javax.mail</groupId>
+		<artifactId>mail</artifactId>
+		<version>1.4.7</version>
+	</dependency>
+	
 
   </dependencies>
   <build>

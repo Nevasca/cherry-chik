@@ -87,14 +87,20 @@
 							}
 						})
 						.state("pedidoNovo", {
-							url: "/pedidoNovo",
+							url: "/pedidoNovo/:id",
 							templateUrl: "app/pedido/pedidoNovoView.html",
 							controller: "PedidoNovoCtrl",
 							resolve: {
 								produtoService: "produtoService",
+								pedidoService: "pedidoService",
 								produtos: function(produtoService) {
 									return produtoService.listarProdutos();
+								},
+								pedido : function(pedidoService, $stateParams) {
+									var id = $stateParams.id;						
+									return pedidoService.buscarPorId(id);
 								}
+								
 							}
 						})
 						.state("pedidoConsulta", {
@@ -107,6 +113,11 @@
 									return pedidoService.listarPedidos();
 								}
 							}
+						})
+						.state("enderecadorRelatorio", {
+							url: "/enderecadorRelatorio",
+							templateUrl: "app/enderecador/enderecadorRelatorioView.html",
+							controller: "EnderecadorRelatorioCtrl",							
 						});	
 		
 	}]);

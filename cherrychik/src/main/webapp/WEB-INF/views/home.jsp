@@ -38,6 +38,7 @@
 <script type="text/javascript" src="app/notas/notasCtrl.js"></script>
 <script type="text/javascript" src="app/enderecador/enderecadorCtrl.js"></script>
 <script type="text/javascript" src="app/enderecador/enderecadorConsultaCtrl.js"></script>
+<script type="text/javascript" src="app/enderecador/enderecadorRelatorioCtrl.js"></script>
 <script type="text/javascript" src="app/descricao/descricaoCtrl.js"></script>
 <script type="text/javascript" src="app/descricao/descricaoMontarCtrl.js"></script>
 <script type="text/javascript" src="app/produto/produtoCadastroCtrl.js"></script>
@@ -88,8 +89,17 @@
 						Pedido <span class="caret"></span>
 					</a>
 					<ul class="dropdown-menu">
-						<li><a ui-sref="pedidoNovo"><span class="glyphicon glyphicon-plus"></span> Novo</a></li>
+						<li><a ui-sref="pedidoNovo({id: 0})"><span class="glyphicon glyphicon-plus"></span> Novo</a></li>
 						<li><a ui-sref="pedidoConsulta"><span class="glyphicon glyphicon-search"></span> Consultar</a></li>
+					</ul>
+				</li>
+				
+				<li class="dropdown">
+					<a href="" class="dropdown-toggle" data-toggle="dropdown" role="button" ari-haspopup="true" aria-expanded="false">
+						Relatorios <span class="caret"></span>
+					</a>
+					<ul class="dropdown-menu">
+						<li><a ui-sref="enderecadorRelatorio">Endereçador</a></li>
 					</ul>
 				</li>
 				

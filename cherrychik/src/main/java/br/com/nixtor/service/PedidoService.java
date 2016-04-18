@@ -8,5 +8,5 @@ public interface PedidoService {
 	
 	Pedido salvar(Pedido pedido);
 	List<Pedido> listarPedidos();
-	
+	Pedido buscarPorId(Long id);	
 }

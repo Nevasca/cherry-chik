@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import br.com.nixtor.model.Enderecador;
+import br.com.nixtor.model.EnderecadorRelatorio;
 import br.com.nixtor.service.EnderecadorService;
 
 @RestController
@@ -46,6 +47,12 @@ public class EnderecadorController {
 		List<Enderecador> enderecadores = enderecadorService.pesquisarEnderecador(enderecador);		
 		
 		return new ResponseEntity<List<Enderecador>>(enderecadores, HttpStatus.OK);
+	}
+	
+	@RequestMapping(value = URL + "relatorio/", method = RequestMethod.GET)
+	public ResponseEntity<List<EnderecadorRelatorio>> relatorio() {
+		List<EnderecadorRelatorio> relatorio = enderecadorService.relatorio();
+		return new ResponseEntity<List<EnderecadorRelatorio>>(relatorio, HttpStatus.OK);
 	}
 	
 }

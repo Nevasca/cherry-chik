@@ -10,7 +10,7 @@
 		<thead>
 			<tr>
 				<th class="col-md-1">#</th>
-				<th class="col-md-5">Cliente</th>
+				<th class="col-md-5">Realizado em</th>
 				<th class="col-md-3">Total</th>
 				<th class="col-md-3">Ações</th>
 			</tr>
@@ -18,10 +18,10 @@
 		<tbody>
 			<tr ng-repeat="pedido in pedidos">
 				<td>{{pedido.id}}</td>
-				<td>Não implementado</td>
+				<td>{{pedido.data | date:'dd/MM/yyyy HH:mm'}}</td>
 				<td>{{calcularTotal(pedido.itens) | currency:"R$ "}}</td>				
 				<td>
-					<a class="btn btn-primary" ng-click="exibirDetalhes(pedido)">Detalhes</a>
+					<a class="btn btn-primary" ui-sref="pedidoNovo({id: pedido.id})">Detalhes</a>
 					<a class="btn btn-default" ng-click="deletarPedido($index)"><span class="glyphicon glyphicon-remove"></span> Deletar</a>					
 				</td>
 			</tr>

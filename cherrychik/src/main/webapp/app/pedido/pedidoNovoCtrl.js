@@ -2,17 +2,22 @@
 	
 	angular
 		.module("gestaoCherry")
-		.controller("PedidoNovoCtrl", ["$scope", "produtos", "pedidoService", PedidoNovoCtrl]);
+		.controller("PedidoNovoCtrl", ["$scope", "produtos", "pedidoService", "pedido", PedidoNovoCtrl]);
 	
-	function PedidoNovoCtrl($scope, produtos, pedidoService) {
+	function PedidoNovoCtrl($scope, produtos, pedidoService, pedido) {
 		
 		$scope.produtos = produtos; //Lista de produtos cadastrados no sistema
 						
 		$scope.novoItem = {};
-		
-		$scope.pedido = {};
-		$scope.pedido.itens = []; //Produtos adicionados ao pedido
-		
+		if(pedido.id) //Se for um pedido existente
+		{
+			$scope.pedido = pedido;
+		}
+		else { //Novo pedido
+			$scope.pedido = {};
+			$scope.pedido.itens = [];
+		}
+
 		$scope.addItem = function() {
 			
 			if($scope.novoItem.index) {
@@ -39,10 +44,9 @@
 		
 		$scope.calcularTotal = function() {
 			return pedidoService.calcularTotal($scope.pedido.itens);
-					
 		};
 		
-		$scope.finalizarPedido = function() {					
+		$scope.finalizarPedido = function() {			
 			pedidoService.salvarPedido($scope.pedido);
 		};
 		
