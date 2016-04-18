@@ -22,7 +22,7 @@
 				<td>{{produto.preco | currency:"R$ "}}</td>				
 				<td>					
 					<a class="btn btn-primary" ui-sref="produtoCadastro({id: produto.id})"><span class="glyphicon glyphicon-pencil"></span> Editar</a>
-					<a class="btn btn-default" ng-click="deletarProduto(produto.id)"><span class="glyphicon glyphicon-remove"></span> Deletar</a>					
+					<a class="btn btn-default" ng-click="deletarProduto($index)"><span class="glyphicon glyphicon-remove"></span> Deletar</a>					
 				</td>
 			</tr>
 		</tbody>

@@ -96,6 +96,17 @@
 									return produtoService.listarProdutos();
 								}
 							}
+						})
+						.state("pedidoConsulta", {
+							url: "/pedidoConsulta",
+							templateUrl: "app/pedido/pedidoConsultaView.html",
+							controller: "PedidoConsultaCtrl",
+							resolve: {
+								pedidoService: "pedidoService",
+								pedidos: function(pedidoService) {
+									return pedidoService.listarPedidos();
+								}
+							}
 						});	
 		
 	}]);

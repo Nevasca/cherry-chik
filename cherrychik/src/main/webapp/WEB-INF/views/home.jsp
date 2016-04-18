@@ -32,6 +32,7 @@
 <script type="text/javascript" src="common/services/descricaoService.js"></script>
 <script type="text/javascript" src="common/services/corService.js"></script>
 <script type="text/javascript" src="common/services/produtoService.js"></script>
+<script type="text/javascript" src="common/services/pedidoService.js"></script>
 
 <!-- Controllers -->
 <script type="text/javascript" src="app/notas/notasCtrl.js"></script>
@@ -42,6 +43,7 @@
 <script type="text/javascript" src="app/produto/produtoCadastroCtrl.js"></script>
 <script type="text/javascript" src="app/produto/produtoConsultaCtrl.js"></script>
 <script type="text/javascript" src="app/pedido/pedidoNovoCtrl.js"></script>
+<script type="text/javascript" src="app/pedido/pedidoConsultaCtrl.js"></script>
 
 </head>
 <body ng-app="gestaoCherry">
@@ -87,7 +89,7 @@
 					</a>
 					<ul class="dropdown-menu">
 						<li><a ui-sref="pedidoNovo"><span class="glyphicon glyphicon-plus"></span> Novo</a></li>
-<!-- 						<li><a ui-sref="produtoConsulta"><span class="glyphicon glyphicon-search"></span> Consultar</a></li> -->
+						<li><a ui-sref="pedidoConsulta"><span class="glyphicon glyphicon-search"></span> Consultar</a></li>
 					</ul>
 				</li>
 				

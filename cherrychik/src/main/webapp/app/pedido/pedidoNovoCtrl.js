@@ -2,46 +2,48 @@
 	
 	angular
 		.module("gestaoCherry")
-		.controller("PedidoNovoCtrl", ["$scope", "produtos", PedidoNovoCtrl]);
+		.controller("PedidoNovoCtrl", ["$scope", "produtos", "pedidoService", PedidoNovoCtrl]);
 	
-	function PedidoNovoCtrl($scope, produtos) {
+	function PedidoNovoCtrl($scope, produtos, pedidoService) {
 		
 		$scope.produtos = produtos; //Lista de produtos cadastrados no sistema
-		$scope.itens = []; //Produtos adicionados ao pedido
-		
+						
 		$scope.novoItem = {};
+		
+		$scope.pedido = {};
+		$scope.pedido.itens = []; //Produtos adicionados ao pedido
 		
 		$scope.addItem = function() {
 			
 			if($scope.novoItem.index) {
 				var i = $scope.novoItem.index;
-				var qtd = $scope.novoItem.quantidade;
-				$scope.itens.push(angular.copy($scope.produtos[i]));
-				$scope.itens[$scope.itens.length - 1].quantidade = qtd;
+				$scope.novoItem.produto = $scope.produtos[i];				
+				if($scope.pedido.itens.indexOf($scope.novoItem) == -1) { //Se for um novo item, adicionar na lista, se não, só editar
+					$scope.pedido.itens.push($scope.novoItem);
+				}
+				$scope.novoItem = {};
 			}			
 		};
 		
-		$scope.mudarItem = function() {
-			var i = $scope.novoItem.index;
-			$scope.novoItem = $scope.produtos[i];
-			$scope.novoItem.index = i;
+		$scope.editarItem = function(index) {
+			$scope.novoItem = $scope.pedido.itens[index];
 		};
 		
 		$scope.removerItem = function(index) {
-			$scope.itens.splice(index, 1);
+			$scope.pedido.itens.splice(index, 1);
 		};
 		
 		$scope.calcularSubtotal = function(item) {
-			return item.preco * item.quantidade;
+			return pedidoService.calcularSubtotal(item);
 		};
 		
 		$scope.calcularTotal = function() {
-			var total = 0;
-			
-			for(var i = 0; i < $scope.itens.length; i++) {
-				total += $scope.calcularSubtotal($scope.itens[i]);
-			}			
-			return total;
+			return pedidoService.calcularTotal($scope.pedido.itens);
+					
+		};
+		
+		$scope.finalizarPedido = function() {					
+			pedidoService.salvarPedido($scope.pedido);
 		};
 		
 	}
