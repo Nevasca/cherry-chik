@@ -19,7 +19,7 @@ public class Enderecador {
 	private String tipo;
 	private String pedido;
 	//private Timestamp data = new Timestamp(new Date().getTime());;
-	private Timestamp data = new Timestamp(new Date(2016, 4, 18).getTime());;
+	private Timestamp data = new Timestamp(new Date().getTime());;
 
 	public Long getId() {
 		return id;
