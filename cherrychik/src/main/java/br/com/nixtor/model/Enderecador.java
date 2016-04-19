@@ -4,6 +4,7 @@ package br.com.nixtor.model;
 import java.sql.Timestamp;
 import java.util.Date;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -16,10 +17,11 @@ public class Enderecador {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	private String endereco;
+	@Column(length = 5)
 	private String tipo;
+	@Column(length = 6)
 	private String pedido;
-	//private Timestamp data = new Timestamp(new Date().getTime());;
-	private Timestamp data = new Timestamp(new Date().getTime());;
+	private Timestamp data = new Timestamp(new Date().getTime());;	
 
 	public Long getId() {
 		return id;

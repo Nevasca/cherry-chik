@@ -125,6 +125,17 @@
 									return enderecadorService.relatorio();
 								}
 							}
+						})
+						.state("pedidoRelatorio", {
+							url: "/pedidoRelatorio",
+							templateUrl: "app/pedido/pedidoRelatorioView.html",
+							controller: "PedidoRelatorioCtrl",
+							resolve: {
+								pedidoService: "pedidoService",
+								relatorio: function(pedidoService) {
+									return pedidoService.relatorio();
+								}
+							}
 						});	
 		
 	}]);

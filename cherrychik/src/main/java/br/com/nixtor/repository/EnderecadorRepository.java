@@ -16,7 +16,7 @@ public interface EnderecadorRepository extends JpaRepository<Enderecador, Long>{
 	
 	//Agrupa por mes e popula com o total geral e total de cada tipo de frete
 	@Query("Select new br.com.nixtor.model.EnderecadorRelatorio("
-			+ "month(e.data), "
+			+ "e.data, "
 			+ "count(e.id), "
 			+ "sum(case when e.tipo = 'SEDEX' then 1 else 0 end), "
 			+ "sum(case when e.tipo = 'PAC' then 1 else 0 end)) " +

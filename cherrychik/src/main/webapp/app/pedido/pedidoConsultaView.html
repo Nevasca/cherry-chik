@@ -19,7 +19,7 @@
 			<tr ng-repeat="pedido in pedidos">
 				<td>{{pedido.id}}</td>
 				<td>{{pedido.data | date:'dd/MM/yyyy HH:mm'}}</td>
-				<td>{{calcularTotal(pedido.itens) | currency:"R$ "}}</td>				
+				<td>{{pedido.total | currency:"R$ "}}</td>				
 				<td>
 					<a class="btn btn-primary" ui-sref="pedidoNovo({id: pedido.id})">Detalhes</a>
 					<a class="btn btn-default" ng-click="deletarPedido($index)"><span class="glyphicon glyphicon-remove"></span> Deletar</a>					

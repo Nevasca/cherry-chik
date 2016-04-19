@@ -20,7 +20,11 @@
 			</div>
 			<div class="form-group">
 				<button class="btn btn-default" style="width: 50px; margin-right: 10px" ng-click="limparDescricao()" data-toggle="tooltip" title="Limpar Descricao"><span class="glyphicon glyphicon-trash"></span></button>
-				<button class="btn btn-primary" style="margin-right: 10px" ng-click="salvarDescricao()"><span class="glyphicon glyphicon-ok"></span> Salvar</button>
+				<button class="btn btn-primary" style="margin-right: 10px" 
+					ng-click="salvarDescricao()" 
+					ng-disabled="!novaDescricao.nome || !novaDescricao.template">
+					<span class="glyphicon glyphicon-ok"></span> Salvar
+				</button>
 			</div>
 		</form>
 	</div>
@@ -70,8 +74,12 @@
 		<tbody>
 			<tr ng-repeat="descricao in descricoes">
 				<td>{{descricao.id}}</td>
-				<td><a class="btn btn-link" data-toggle="modal" data-target="#viewDescricao" ng-click="visualizarDescricao(descricao)">{{descricao.nome}}</a></td>
-				<td style="font-style: italic">{{descricao.template | limitTo:"75"}}<span ng-if="descricao.template.length > 75">...</span></td>
+				<td>{{descricao.nome}}</a></td>
+				<td style="font-style: italic">
+					<a class="btn btn-link" data-toggle="modal" data-target="#viewDescricao" ng-click="visualizarDescricao(descricao)">
+						{{descricao.template | limitTo:"75"}}<span ng-if="descricao.template.length > 75">...</span>
+					</a>
+				</td>
 				<td>										
 					<button class="btn btn-primary" ng-click="editarDescricao(descricao)"><span class="glyphicon glyphicon-pencil"></span> Editar</button>
 					<a class="btn btn-default" ng-click="deletarDescricao(descricao.id)"><span class="glyphicon glyphicon-remove"></span> Deletar</a>					

@@ -16,7 +16,7 @@
 		else { //Novo pedido
 			$scope.pedido = {};
 			$scope.pedido.itens = [];
-		}
+		}			
 
 		$scope.addItem = function() {
 			
@@ -43,10 +43,11 @@
 		};
 		
 		$scope.calcularTotal = function() {
-			return pedidoService.calcularTotal($scope.pedido.itens);
+			return pedidoService.calcularTotal($scope.pedido.itens);			
 		};
 		
-		$scope.finalizarPedido = function() {			
+		$scope.finalizarPedido = function() {
+			$scope.pedido.total = $scope.calcularTotal();
 			pedidoService.salvarPedido($scope.pedido);
 		};
 		

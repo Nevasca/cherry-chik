@@ -48,6 +48,7 @@
 <script type="text/javascript" src="app/produto/produtoConsultaCtrl.js"></script>
 <script type="text/javascript" src="app/pedido/pedidoNovoCtrl.js"></script>
 <script type="text/javascript" src="app/pedido/pedidoConsultaCtrl.js"></script>
+<script type="text/javascript" src="app/pedido/pedidoRelatorioCtrl.js"></script>
 
 </head>
 <body ng-app="gestaoCherry">
@@ -103,6 +104,7 @@
 					</a>
 					<ul class="dropdown-menu">
 						<li><a ui-sref="enderecadorRelatorio">Endereçador</a></li>
+						<li><a ui-sref="pedidoRelatorio">Pedido</a></li>
 					</ul>
 				</li>
 				

@@ -15,7 +15,7 @@
 			totalPac += relatorio[i].totalPac;
 			
 			graficoDadosTotal.push({
-				x: relatorio[i].mes,
+				x: $filter('date')(relatorio[i].data, 'MMMM'),
 				y: [relatorio[i].total,
 				    relatorio[i].totalSedex,
 				    relatorio[i].totalPac]

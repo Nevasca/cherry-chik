@@ -23,6 +23,7 @@ public class Pedido {
 	@Column(length = 300)
 	private String observacao;
 	private Timestamp data;
+	private double total;
 
 	@OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
 	private List<Item> itens;
@@ -65,6 +66,14 @@ public class Pedido {
 
 	public void setData(Timestamp data) {
 		this.data = data;
+	}
+
+	public double getTotal() {
+		return total;
+	}
+
+	public void setTotal(double total) {
+		this.total = total;
 	}
 
 }

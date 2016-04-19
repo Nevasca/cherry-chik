@@ -13,9 +13,7 @@
 		};
 		
 		$scope.addEnderecador = function() {
-			$scope.novoEnderecador.endereco = $sce.trustAsHtml($scope.novoEnderecador.endereco).toString();						
-//			$scope.novoEnderecador.data = new Date();
-//			console.log($scope.novoEnderecador.data);
+			$scope.novoEnderecador.endereco = $sce.trustAsHtml($scope.novoEnderecador.endereco).toString();
 			
 			var id = $scope.novoEnderecador.id ? $scope.novoEnderecador.id : null;			
 			if(id == null) {

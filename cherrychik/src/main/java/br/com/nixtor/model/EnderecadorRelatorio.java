@@ -1,24 +1,26 @@
 package br.com.nixtor.model;
 
+import java.util.Date;
+
 public class EnderecadorRelatorio {
 
-	private int mes;
+	private Date data;
 	private long total;
 	private long totalSedex;
 	private long totalPac;
 	
-	public EnderecadorRelatorio(int mes, long total, long totalSedex, long totalPac) {
-		this.mes = mes;
+	public EnderecadorRelatorio(Date data, long total, long totalSedex, long totalPac) {
+		this.data = data;
 		this.total = total;
 		this.totalSedex = totalSedex;
 		this.totalPac = totalPac;
 	}
 	
-	public int getMes() {
-		return mes;
+	public Date getData() {
+		return data;
 	}
-	public void setMes(int mes) {
-		this.mes = mes;
+	public void setData(Date data) {
+		this.data = data;
 	}
 	public long getTotal() {
 		return total;

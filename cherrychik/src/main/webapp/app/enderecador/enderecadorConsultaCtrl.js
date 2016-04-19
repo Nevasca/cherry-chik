@@ -6,13 +6,13 @@
 	
 	function EnderecadorConsultaCtrl($scope, enderecadores, enderecadorService) {
 		
-		$scope.enderecadores = enderecadores;		
+		$scope.enderecadores = enderecadores;
 		$scope.viewEnderecador = {};
 		$scope.buscaEnderecador = {};
 		
 		$scope.deletarEnderecador = function(index) {
 			enderecadorService.deletarEnderecador($scope.enderecadores[index].id);
-			$scope.enderecadores.splice(index, 1);			
+			$scope.enderecadores.splice(index, 1);
 		};
 		
 		$scope.visualizarEnderecador = function(enderecador) {

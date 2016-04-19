@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import br.com.nixtor.model.Pedido;
+import br.com.nixtor.model.PedidoRelatorio;
 import br.com.nixtor.service.PedidoService;
 
 @RestController
@@ -40,5 +41,12 @@ public class PedidoController {
 		
 		Pedido pedido = pedidoService.buscarPorId(id);
 		return new ResponseEntity<Pedido>(pedido, HttpStatus.OK);
+	}
+	
+	@RequestMapping(value = URL + "relatorio/", method = RequestMethod.GET)
+	public ResponseEntity<List<PedidoRelatorio>> relatorio() {
+		
+		List<PedidoRelatorio> relatorio = pedidoService.relatorio();
+		return new ResponseEntity<List<PedidoRelatorio>>(relatorio, HttpStatus.OK);
 	}
 }

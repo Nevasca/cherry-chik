@@ -2,10 +2,9 @@
 	<h1>
 		Notas 
 		<span class="badge">{{notas.length}}</span> 
-		<button class="btn btn-link" data-toggle="modal" data-target="#edicaoNota"><span class="glyphicon glyphicon-plus"></span> Adicionar</button>
+		<button class="btn btn-link" data-toggle="modal" data-target="#edicaoNota" ng-click="limparNota()"><span class="glyphicon glyphicon-plus"></span> Adicionar</button>
 	</h1>
-	Coloque aqui anotações rápidas, como respostas prontas para aqueles clientes que nunca leem as informações da loja
-	<p><small>Para casos que precisam de mais atenção, utilize o <a href="">cadastro de pendências</a></small></p>
+	Coloque aqui anotações rápidas, como respostas prontas para perguntas comuns	
 </div>
 
 <!-- Modal para cadastrar e editar uma nota -->
@@ -19,16 +18,21 @@
 			<div class="modal-body">
 				<form>
 					<div class="form-group">
-						<input type="text" class="form-control" style="font-weight: bold;" placeholder="Título" ng-model="novaNota.titulo">
+						<input type="text" class="form-control" style="font-weight: bold;" placeholder="Título" ng-model="novaNota.titulo" maxlength="50">
 					</div>
 					<div class="form-group">
-						<textarea class="form-control" rows="10" placeholder="Criar uma nota..." ng-model="novaNota.descricao"></textarea>
-					</div>					
+						<textarea class="form-control" rows="10" placeholder="Criar uma nota..." ng-model="novaNota.descricao" maxlength="600"></textarea>
+					</div>
+					Caracteres restantes: {{600 - novaNota.descricao.length}}			
 				</form>
 			</div>
 			<div class="modal-footer">
 				<button class="btn btn-default" style="width: 50px; margin-right: 10px" ng-click="limparNota()" data-toggle="tooltip" title="Limpar Nota"><span class="glyphicon glyphicon-trash"></span></button>
-				<button class="btn btn-primary" style="margin-right: 10px" ng-click="salvarNota()"><span class="glyphicon glyphicon-ok"></span> Salvar</button>
+				<button class="btn btn-primary" style="margin-right: 10px" 
+					ng-click="salvarNota()" 
+					ng-disabled="!novaNota.titulo || !novaNota.descricao">
+					<span class="glyphicon glyphicon-ok"></span> Salvar
+				</button>
 			</div>
 		</div>
 	</div>
@@ -37,22 +41,20 @@
 
 <!-- Lista de notas já cadastradas -->
 <div class="row">
-	<div ng-repeat="nota in notas">				
-		<div class="panel panel-default">
-			<div class="panel-heading" style="font-weight: bold">{{nota.titulo}}</div>
-			<div class="panel-body">
-				<p id="{{'nota' + nota.id}}">{{nota.descricao}}</p>				
-				<a class="btn btn-default copiar" style="margin-right: 10px" data-toggle="tooltip" title="Copiar" data-clipboard-target="{{'#nota' + nota.id}}">
+	<div class="well" ng-repeat="nota in notas" style="background-color: {{nota.cor}};">		
+			<h3>{{nota.titulo}}</h3>			
+			<div id="{{'nota' + nota.id}}" ng-bind-html="nota.descricao"></div>
+			<div>
+				<a class="btn btn-link copiar" style="margin-right: 10px" data-toggle="tooltip" title="Copiar" data-clipboard-target="{{'#nota' + nota.id}}">
 					<span class="glyphicon glyphicon-copy"></span> Copiar
 				</a>
-				<a class="btn btn-default" style="margin-right: 10px" title="Editar" data-toggle="modal" data-target="#edicaoNota" ng-click="editarNota(nota)">
+				<a class="btn btn-link" style="margin-right: 10px" title="Editar" data-toggle="modal" data-target="#edicaoNota" ng-click="editarNota(nota)">
 					<span class="glyphicon glyphicon-pencil"></span> Editar
 				</a>
-				<a class="btn btn-default" style="margin-right: 10px" title="Deletar" ng-click="deletarNota(nota.id)">
+				<a class="btn btn-link" style="margin-right: 10px" title="Deletar" ng-click="deletarNota(nota.id)">
 					<span class="glyphicon glyphicon-remove"></span> Deletar
 				</a>
-			</div>									
-		</div>
-	</div>		
+			</div>												
+	</div>
 </div>
 <!-- Fim da lista de notas -->

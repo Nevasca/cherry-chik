@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import br.com.nixtor.model.Pedido;
+import br.com.nixtor.model.PedidoRelatorio;
 import br.com.nixtor.repository.PedidoRepository;
 import br.com.nixtor.util.Email;
 
@@ -40,5 +41,24 @@ public class PedidoServiceImpl implements PedidoService {
 	public Pedido buscarPorId(Long id) { 
 		return pedidoRepository.findOne(id);
 	}
+
+	public List<PedidoRelatorio> relatorio() {
+		
+		return pedidoRepository.relatorio();
+	}
+
+//	public double calcularTotal(List<Item> itens) {
+//		double total = 0;
+//		
+//		for(int i = 0; i < itens.size(); i++) {
+//			total += calcularSubTotal(itens.get(i));
+//		}
+//		
+//		return total;
+//	}
+//
+//	public double calcularSubTotal(Item item) {
+//		return item.getQuantidade() * item.getProduto().getPreco();		
+//	}
 
 }

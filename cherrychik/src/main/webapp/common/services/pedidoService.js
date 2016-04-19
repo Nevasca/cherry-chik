@@ -32,12 +32,17 @@
 			return total;
 		};
 		
+		function relatorio() {
+			return $http.get(url + "relatorio/").then(function(response){return response.data;});
+		}
+		
 		return {			
 			salvarPedido: salvarPedido,		
 			listarPedidos: listarPedidos,
 			buscarPorId: buscarPorId,
 			calcularSubtotal: calcularSubtotal,
-			calcularTotal: calcularTotal
+			calcularTotal: calcularTotal,
+			relatorio: relatorio
 		}
 		
 	}

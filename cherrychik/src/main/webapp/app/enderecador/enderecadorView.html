@@ -2,7 +2,7 @@
 	<h1>
 		Endereçador 
 		<span class="badge">{{enderecadores.length}}</span> 
-		<button class="btn btn-link" data-toggle="modal" data-target="#edicaoEnderecador"><span class="glyphicon glyphicon-plus"></span> Adicionar</button>
+		<button class="btn btn-link" data-toggle="modal" data-target="#edicaoEnderecador" ng-click="limparEnderecador()"><span class="glyphicon glyphicon-plus"></span> Adicionar</button>
 <!-- 		<button class="btn btn-link" style="margin-left: 5px"><span class="glyphicon glyphicon-floppy-disk"></span> Salvar</button> -->
 	</h1>
 	Informe os endereços e modalidade de frete para a coleta do dia	
@@ -19,10 +19,10 @@
 			<div class="modal-body">
 				<form>
 					<div class="form-group">
-						<input type="text" class="form-control" ng-model="novoEnderecador.pedido" placeholder="Número do pedido, se houver">
+						<input type="text" class="form-control" ng-model="novoEnderecador.pedido" placeholder="Número do pedido, se houver" maxlength="6">
 					</div>
 					<div class="form-group">
-						<textarea class="form-control" style="white-space: pre-wrap;" rows="10" placeholder="Endereço do destinatário..." ng-model="novoEnderecador.endereco"></textarea>
+						<textarea class="form-control" style="white-space: pre-wrap;" rows="10" placeholder="Endereço do destinatário..." ng-model="novoEnderecador.endereco" maxlength="255"></textarea>
 					</div>
 					<div class="form-group">												
 							<select class="form-control" ng-model="novoEnderecador.tipo">
@@ -34,7 +34,10 @@
 			</div>
 			<div class="modal-footer">
 				<button class="btn btn-default" style="width: 50px; margin-right: 10px" ng-click="limparEnderecador()" data-toggle="tooltip" title="Limpar Nota"><span class="glyphicon glyphicon-trash"></span></button>
-				<button class="btn btn-primary" style="margin-right: 10px" ng-click="addEnderecador()"><span class="glyphicon glyphicon-ok"></span> Adicionar</button>
+				<button class="btn btn-primary" style="margin-right: 10px" 
+					ng-click="addEnderecador()" 
+					ng-disabled="!novoEnderecador.endereco">
+					<span class="glyphicon glyphicon-ok"></span> Adicionar</button>					
 			</div>
 		</div>
 	</div>
