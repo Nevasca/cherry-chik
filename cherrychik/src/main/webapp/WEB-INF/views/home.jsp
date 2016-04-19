@@ -9,6 +9,7 @@
 <!-- Style Sheets -->
 <link type="text/css" rel="stylesheet" href="resources/css/bootstrap.css">
 <link type="text/css" rel="stylesheet" href="resources/css/tema.css">
+<link type="text/css" rel="stylesheet" href="resources/css/angular-chart.css">
 <link type="text/css" rel="stylesheet" href="resources/css/main.css">
 
 <!-- Bibliotecas -->
@@ -16,10 +17,12 @@
 <script type="text/javascript" src="resources/js/angular.js"></script>
 <script type="text/javascript" src="resources/js/bootstrap.js"></script>
 <script type="text/javascript" src="resources/js/clipboard.js"></script>
+<script type="text/javascript" src="resources/js/d3.js"></script>
 <script type="text/javascript" src="resources/js/angular-ui-router.js"></script>
 <script type="text/javascript" src="resources/js/angular-resource.js"></script>
 <script type="text/javascript" src="resources/js/angular-mocks.js"></script>
 <script type="text/javascript" src="resources/js/angular-sanitize.js"></script>
+<script type="text/javascript" src="resources/js/angular-charts.js"></script>
 
 <!-- Aplicacao -->
 <script type="text/javascript" src="app/app.js"></script>

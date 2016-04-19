@@ -4,10 +4,14 @@ public class EnderecadorRelatorio {
 
 	private int mes;
 	private long total;
+	private long totalSedex;
+	private long totalPac;
 	
-	public EnderecadorRelatorio(int mes, long total) {
+	public EnderecadorRelatorio(int mes, long total, long totalSedex, long totalPac) {
 		this.mes = mes;
 		this.total = total;
+		this.totalSedex = totalSedex;
+		this.totalPac = totalPac;
 	}
 	
 	public int getMes() {
@@ -21,6 +25,22 @@ public class EnderecadorRelatorio {
 	}
 	public void setTotal(long total) {
 		this.total = total;
+	}
+
+	public long getTotalSedex() {
+		return totalSedex;
+	}
+
+	public void setTotalSedex(long totalSedex) {
+		this.totalSedex = totalSedex;
+	}
+
+	public long getTotalPac() {
+		return totalPac;
+	}
+
+	public void setTotalPac(long totalPac) {
+		this.totalPac = totalPac;
 	}
 	
 }

@@ -2,7 +2,8 @@
 	
 	var app = angular.module("gestaoCherry", ["ui.router",
 	                                          "common.services",
-	                                          "ngSanitize"]); //,"notaResourceMock"
+	                                          "ngSanitize",
+	                                          "angularCharts"]); //,"notaResourceMock"
 	
 	app.config(["$stateProvider", "$urlRouterProvider",
 	            function($stateProvider, $urlRouterProvider) {
@@ -117,7 +118,13 @@
 						.state("enderecadorRelatorio", {
 							url: "/enderecadorRelatorio",
 							templateUrl: "app/enderecador/enderecadorRelatorioView.html",
-							controller: "EnderecadorRelatorioCtrl",							
+							controller: "EnderecadorRelatorioCtrl",
+							resolve: {
+								enderecadorService: "enderecadorService",
+								relatorio: function(enderecadorService) {
+									return enderecadorService.relatorio();
+								}
+							}
 						});	
 		
 	}]);

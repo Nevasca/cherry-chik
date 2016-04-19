@@ -33,3 +33,9 @@ textarea {
 /* 	height: 40px; */
 /* 	width: 40px; */
 }
+
+.chart {
+	width: 100%;
+/* 	margin-left: 20px; */
+	height: 300px;
+}

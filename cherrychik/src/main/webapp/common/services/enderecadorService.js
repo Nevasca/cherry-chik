@@ -23,11 +23,16 @@
 			return $http.post(url + "filtro/", enderecador).then(function(response){return response.data;});
 		}
 		
+		function relatorio() {
+			return $http.get(url + "relatorio/").then(function(response){return response.data;});
+		}
+		
 		return {			
 			salvarEnderecador: salvarEnderecador,
 			deletarEnderecador: deletarEnderecador,
 			listarEnderecadores: listarEnderecadores,
-			pesquisarEnderecador: pesquisarEnderecador
+			pesquisarEnderecador: pesquisarEnderecador,
+			relatorio: relatorio
 		}
 		
 	}
