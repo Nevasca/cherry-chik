@@ -140,6 +140,11 @@
 		
 	}]);
 	
-	
+	//Configuracoes padroes do popup de aviso
+	toastr.options = {
+		closeButton: true, 
+		positionClass: "toast-top-center",
+		timeOut: 2000
+	};
 	
 }());

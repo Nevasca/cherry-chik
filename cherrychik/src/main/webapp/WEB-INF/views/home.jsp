@@ -11,6 +11,7 @@
 <link type="text/css" rel="stylesheet" href="resources/css/tema.css">
 <link type="text/css" rel="stylesheet" href="resources/css/angular-chart.css">
 <link type="text/css" rel="stylesheet" href="resources/css/main.css">
+<link type="text/css" rel="stylesheet" href="resources/css/toastr.css">
 
 <!-- Bibliotecas -->
 <script type="text/javascript" src="resources/js/jquery-2.2.0.min.js"></script>
@@ -23,6 +24,7 @@
 <script type="text/javascript" src="resources/js/angular-mocks.js"></script>
 <script type="text/javascript" src="resources/js/angular-sanitize.js"></script>
 <script type="text/javascript" src="resources/js/angular-charts.js"></script>
+<script type="text/javascript" src="resources/js/toastr.js"></script>
 
 <!-- Aplicacao -->
 <script type="text/javascript" src="app/app.js"></script>

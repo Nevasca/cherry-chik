@@ -16,7 +16,7 @@ public class Nota {
 	private String titulo;
 	@Column(length = 600)
 	private String descricao;
-	@Column(length = 7)
+	@Column(length = 7) //Hexadecimal + #
 	private String cor;
 
 	public Long getId() {

@@ -7,15 +7,16 @@ import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 
 @Entity
-public class Item{
+public class Item {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
-//	@ManyToOne
-//	private Pedido pedido;
 	@ManyToOne
-	private Produto produto;
+	private Pedido pedido;
+	private String nome;
+	private double preco;
+
 	private int quantidade;
 
 	public Long getId() {
@@ -26,20 +27,12 @@ public class Item{
 		this.id = id;
 	}
 
-//	public Pedido getPedido() {
-//		return pedido;
-//	}
-//
-//	public void setPedido(Pedido pedido) {
-//		this.pedido = pedido;
-//	}
-
-	public Produto getProduto() {
-		return produto;
+	public Pedido getPedido() {
+		return pedido;
 	}
 
-	public void setProduto(Produto produto) {
-		this.produto = produto;
+	public void setPedido(Pedido pedido) {
+		this.pedido = pedido;
 	}
 
 	public int getQuantidade() {
@@ -48,6 +41,22 @@ public class Item{
 
 	public void setQuantidade(int quantidade) {
 		this.quantidade = quantidade;
+	}
+
+	public String getNome() {
+		return nome;
+	}
+
+	public void setNome(String nome) {
+		this.nome = nome;
+	}
+
+	public double getPreco() {
+		return preco;
+	}
+
+	public void setPreco(double preco) {
+		this.preco = preco;
 	}
 
 }

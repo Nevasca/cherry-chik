@@ -10,6 +10,8 @@
 		var clipboard = new Clipboard(".copiar");
 		$scope.novaNota = {};
 		
+		var indexDel = 0; //Var aux que salva o index que precisa deletar
+		
 		$scope.salvarNota = function() {
 			//Verifica se exite um id (está editando uma nota já criada) ou é uma nova
 			var id = $scope.novaNota.id ? $scope.novaNota.id : null;
@@ -20,10 +22,10 @@
 			
 			if(id == null)
 			{
-				notaService.salvarNota($scope.novaNota).then(atualizarLista); //Atualiza a lista com o novo criado			
+				notaService.salvarNota($scope.novaNota).then(atualizarLista, mensagemErroSalvar); //Atualiza a lista com o novo criado			
 			}
 			else {
-				notaService.salvarNota($scope.novaNota);
+				notaService.salvarNota($scope.novaNota).then(mensagemSucesso, mensagemErroSalvar);
 			}
 						
 			$scope.limparNota();
@@ -37,26 +39,24 @@
 		
 		$scope.limparNota = function() {
 			$scope.novaNota = {};
-		};
-				
-		$scope.deletarNota = function(id) {
-			notaService.deletarNota(id); //Remove do banco
-			
-			//Remove o elemento da pagina 
-			//(a navegacao fica mais fluida quando nao atualiza a lista, alem de nao precisar consultar novamente no banco)
-			var index = 0;
-			for(var i = 0; i < notas.length; i++) {
-				if(notas[i].id == id) {
-					index = i;
-					break;
-				}
-			}						
-			$scope.notas.splice(index, 1);
+		};				
+		
+		$scope.deletarNota = function(index) {
+			indexDel = index;
+			notaService.deletarNota($scope.notas[index].id).then(removerDaLista, mensagemErroExcluir); //Remove do banco			
 		};
 		
 		//Atualiza o array de notas consultando o web service
 		function atualizarLista(data) {
+			mensagemSucesso();
 			$scope.notas.push(data);
+		}
+		
+		function removerDaLista() {
+			toastr.success("Nota esquecida!");
+			//Remove o elemento da pagina 
+			//(a navegacao fica mais fluida quando nao atualiza a lista, alem de nao precisar consultar novamente no banco)				
+			$scope.notas.splice(indexDel, 1);
 		}
 		
 		//Formata a descricao da nota com pular linha para <br>
@@ -70,6 +70,19 @@
 			var cores = ["#FFFCD3", "#FFF3D3", "#FFEAD3", "#FFDDD3", "#FFD3D8"];
 			
 			return cores[Math.floor(Math.random() * cores.length)];			
-		};
+		}
+		
+		function mensagemSucesso() {
+			toastr.success("Anotado!");
+		}
+		
+		function mensagemErroSalvar() {
+			toastr.error("Não foi possível salvar a nota","Erro");
+		}
+		
+		function mensagemErroExcluir() {
+			toastr.error("Não foi possível excluir a nota","Erro");
+		}
+				
 	}
 }());

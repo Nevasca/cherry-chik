@@ -20,7 +20,7 @@
 		}
 		
 		function calcularSubtotal(item) {
-			return item.produto.preco * item.quantidade;
+			return item.preco * item.quantidade;
 		}
 		
 		function calcularTotal(itens) {

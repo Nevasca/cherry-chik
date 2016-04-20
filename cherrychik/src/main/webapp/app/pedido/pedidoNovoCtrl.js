@@ -22,7 +22,9 @@
 			
 			if($scope.novoItem.index) {
 				var i = $scope.novoItem.index;
-				$scope.novoItem.produto = $scope.produtos[i];				
+				$scope.novoItem.nome = $scope.produtos[i].nome;
+				$scope.novoItem.preco = $scope.produtos[i].preco;
+				
 				if($scope.pedido.itens.indexOf($scope.novoItem) == -1) { //Se for um novo item, adicionar na lista, se não, só editar
 					$scope.pedido.itens.push($scope.novoItem);
 				}

@@ -4,7 +4,7 @@
 		<span class="badge">{{notas.length}}</span> 
 		<button class="btn btn-link" data-toggle="modal" data-target="#edicaoNota" ng-click="limparNota()"><span class="glyphicon glyphicon-plus"></span> Adicionar</button>
 	</h1>
-	Coloque aqui anotações rápidas, como respostas prontas para perguntas comuns	
+	Coloque aqui anotações rápidas, como respostas prontas para perguntas comuns
 </div>
 
 <!-- Modal para cadastrar e editar uma nota -->
@@ -18,10 +18,10 @@
 			<div class="modal-body">
 				<form>
 					<div class="form-group">
-						<input type="text" class="form-control" style="font-weight: bold;" placeholder="Título" ng-model="novaNota.titulo" maxlength="50">
+						<input type="text" class="form-control" style="font-weight: bold;" placeholder="Título" ng-model="novaNota.titulo" maxlength="50" required>
 					</div>
 					<div class="form-group">
-						<textarea class="form-control" rows="10" placeholder="Criar uma nota..." ng-model="novaNota.descricao" maxlength="600"></textarea>
+						<textarea class="form-control" rows="10" placeholder="Criar uma nota..." ng-model="novaNota.descricao" maxlength="600" required></textarea>
 					</div>
 					Caracteres restantes: {{600 - novaNota.descricao.length}}			
 				</form>
@@ -40,8 +40,19 @@
 <!-- Fim do modal -->
 
 <!-- Lista de notas já cadastradas -->
-<div class="row">
-	<div class="well" ng-repeat="nota in notas" style="background-color: {{nota.cor}};">		
+<div class="row" ng-repeat="nota in notas">
+	<!-- Confirmação de exclusão da nota -->
+	<div id="aviso{{nota.id}}" class="panel-collapse collapse">  				
+  		<strong>Tem certeza?</strong> A nota "{{nota.titulo}}" será deletada
+  		<a class="btn btn-link" ng-click="deletarNota($index)">
+			Deletar
+		</a>
+		<a class="btn btn-link" data-toggle="collapse" data-target="#aviso{{nota.id}}">
+			<strong>Melhor não</strong>
+		</a>
+	</div>
+	<!-- Nota -->
+	<div class="well" style="background-color: {{nota.cor}};">		
 			<h3>{{nota.titulo}}</h3>			
 			<div id="{{'nota' + nota.id}}" ng-bind-html="nota.descricao"></div>
 			<div>
@@ -51,10 +62,11 @@
 				<a class="btn btn-link" style="margin-right: 10px" title="Editar" data-toggle="modal" data-target="#edicaoNota" ng-click="editarNota(nota)">
 					<span class="glyphicon glyphicon-pencil"></span> Editar
 				</a>
-				<a class="btn btn-link" style="margin-right: 10px" title="Deletar" ng-click="deletarNota(nota.id)">
+				<a class="btn btn-link" style="margin-right: 10px" title="Deletar" data-toggle="collapse" data-target="#aviso{{nota.id}}">
 					<span class="glyphicon glyphicon-remove"></span> Deletar
-				</a>
-			</div>												
-	</div>
+				</a>				
+			</div>
+			
+	</div>		
 </div>
 <!-- Fim da lista de notas -->

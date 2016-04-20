@@ -12,7 +12,7 @@
 		}
 		
 		function deletarEnderecador(id) {
-			$http.delete(url + id);
+			return $http.delete(url + id);
 		}
 		
 		function listarEnderecadores() {

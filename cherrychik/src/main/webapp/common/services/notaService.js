@@ -20,7 +20,7 @@
 		}
 		
 		function deletarNota(id) {			
-			$http.delete(url + id);
+			return $http.delete(url + id);
 		}				
 		
 		return {

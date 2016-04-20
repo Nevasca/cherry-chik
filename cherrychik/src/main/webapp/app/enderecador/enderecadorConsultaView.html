@@ -40,11 +40,22 @@
 					<a class="btn btn-link" data-toggle="modal" data-target="#viewEnderecador" ng-click="visualizarEnderecador(enderecador)">
 						{{enderecador.endereco | limitTo:"50"}}<span ng-if="enderecador.endereco.length > 50">...</span>
 					</a>
+					<!-- Confirmação de exclusão do enderecador -->
+					<div id="aviso{{enderecador.id}}" class="panel-collapse collapse">  				
+				  		<strong>Deletar #{{enderecador.id}}?</strong>
+				  		<a class="btn btn-link" ng-click="deletarEnderecador($index)">
+							Deletar
+						</a>
+						<a class="btn btn-link" data-toggle="collapse" data-target="#aviso{{enderecador.id}}">
+							<strong>Melhor não</strong>
+						</a>
+					</div>
 				</td>
 				<td>					
-					<a class="btn btn-default" ng-click="deletarEnderecador($index)"><span class="glyphicon glyphicon-remove"></span> Deletar</a>					
+					<a class="btn btn-default" data-toggle="collapse" data-target="#aviso{{enderecador.id}}"><span class="glyphicon glyphicon-remove"></span> Deletar</a>					
 				</td>
 			</tr>
+
 		</tbody>
 	</table>
 </div>

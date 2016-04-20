@@ -12,6 +12,7 @@ public class Descricao {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
+	@Column(length = 30)
 	private String nome;
 	@Column(length = 500)
 	private String template;

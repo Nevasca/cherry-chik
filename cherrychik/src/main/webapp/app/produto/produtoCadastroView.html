@@ -10,16 +10,19 @@
 		Dados do produto
 	</div>
 	<div class="panel-body">
-		<form class="form">
+		<form>
 			<div class="form-group">
 				<label for="inputNomeProduto">Nome do produto:</label>
-				<input type="text" class="form-control" ng-model="produto.nome">
+				<input type="text" class="form-control" ng-model="produto.nome" maxlength="50" required>
 			</div>
 			<div class="form-group">
 				<label for="inputPrecoProduto">Preço do produto:</label>
-				<input class="form-control" ng-model="produto.preco">
+				<input class="form-control" ng-model="produto.preco" required>
 			</div>
-			<button class="btn btn-primary" ng-click="cadastrarProduto()">Cadastrar</button>
+			<button type="submit" class="btn btn-primary" 
+				ng-click="cadastrarProduto()" 
+				ng-disabled="!produto.nome || !produto.preco">Cadastrar
+			</button>
 		</form>
 	</div>
 </div>

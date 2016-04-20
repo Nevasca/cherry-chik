@@ -76,9 +76,9 @@ public class Email {
 		String html = "<table><tr><td>Nome</td><td>Quantidade</td><td>Preço Unitário</td></tr>";		
 		for(int i = 0; i < pedido.getItens().size(); i++) {
 			html += "<tr>";
-			html += "<td>" + pedido.getItens().get(i).getProduto().getNome() + "</td>";
+			html += "<td>" + pedido.getItens().get(i).getNome() + "</td>";
 			html += "<td>" + pedido.getItens().get(i).getQuantidade() + "</td>";
-			html += "<td>R$ " + pedido.getItens().get(i).getProduto().getPreco() + "</td>";
+			html += "<td>R$ " + pedido.getItens().get(i).getPreco() + "</td>";
 			html += "</tr>";
 		}
 				
