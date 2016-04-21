@@ -9,9 +9,9 @@
 		http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-3.2.xsd">
 
 	<context:annotation-config />
-	<context:component-scan base-package="br.com.nixtor"/>
+	<context:component-scan base-package="br.com.cherry"/>
 	
-	<jpa:repositories base-package="br.com.nixtor.repository"></jpa:repositories>
+	<jpa:repositories base-package="br.com.cherry.repository"></jpa:repositories>
 	
 	<bean class="org.springframework.orm.jpa.support.PersistenceAnnotationBeanPostProcessor" />
 	
