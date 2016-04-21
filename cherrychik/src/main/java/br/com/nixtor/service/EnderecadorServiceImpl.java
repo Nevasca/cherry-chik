@@ -26,7 +26,7 @@ public class EnderecadorServiceImpl implements EnderecadorService {
 	}
 
 	public List<Enderecador> listarEnderecadores() {
-		return enderecadorRepository.findAll();
+		return enderecadorRepository.findAllByOrderByIdDesc();
 	}
 
 	public List<Enderecador> pesquisarEnderecador(Enderecador enderecador) {

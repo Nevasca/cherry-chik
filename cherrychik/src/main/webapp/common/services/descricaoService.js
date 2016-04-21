@@ -21,7 +21,7 @@
 		}
 		
 		function deletarDescricao(id) {			
-			$http.delete(url + id);
+			return $http.delete(url + id);
 		}				
 		
 		return {

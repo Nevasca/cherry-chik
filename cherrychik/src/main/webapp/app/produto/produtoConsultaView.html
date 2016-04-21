@@ -18,11 +18,24 @@
 		<tbody>
 			<tr ng-repeat="produto in produtos">
 				<td>{{produto.id}}</td>
-				<td>{{produto.nome}}</td>
+				<td>{{produto.nome}}
+				
+					<!-- Confirmação de exclusão do produto -->
+					<div id="aviso{{produto.id}}" class="panel-collapse collapse conf-exclusao">  				
+				  		<strong>Deletar {{produto.nome}}?</strong>
+				  		<a class="btn btn-link" ng-click="deletarProduto($index)">
+							Deletar
+						</a>
+						<a class="btn btn-link" data-toggle="collapse" data-target="#aviso{{produto.id}}">
+							<strong>Melhor não</strong>
+						</a>
+					</div>
+				
+				</td>
 				<td>{{produto.preco | currency:"R$ "}}</td>				
 				<td>					
 					<a class="btn btn-primary" ui-sref="produtoCadastro({id: produto.id})"><span class="glyphicon glyphicon-pencil"></span> Editar</a>
-					<a class="btn btn-default" ng-click="deletarProduto($index)"><span class="glyphicon glyphicon-remove"></span> Deletar</a>					
+					<a class="btn btn-default" data-toggle="collapse" data-target="#aviso{{produto.id}}"><span class="glyphicon glyphicon-remove"></span> Deletar</a>					
 				</td>
 			</tr>
 		</tbody>

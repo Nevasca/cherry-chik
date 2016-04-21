@@ -9,6 +9,8 @@
 		$scope.descricoes = descricoes;
 		$scope.novaDescricao = {};
 		
+		var indexDel = 0;
+		
 		$scope.salvarDescricao = function() {
 			//Verifica se exite um id (está editando uma nota já criada) ou é uma nova
 			var id = $scope.novaDescricao.id ? $scope.novaDescricao.id : null;
@@ -16,10 +18,10 @@
 			
 			if(id == null)
 			{
-				descricaoService.salvarDescricao($scope.novaDescricao).then(atualizarLista); //Atualiza a lista com o novo criado			
+				descricaoService.salvarDescricao($scope.novaDescricao).then(atualizarLista, mensagemErroSalvar); //Atualiza a lista com o novo criado			
 			}
 			else {
-				descricaoService.salvarDescricao($scope.novaDescricao);
+				descricaoService.salvarDescricao($scope.novaDescricao).then(mensagemSucesso, mensagemErroSalvar);
 			}
 						
 			$scope.limparDescricao();
@@ -35,23 +37,21 @@
 			$scope.novaDescricao = {};
 		};
 				
-		$scope.deletarDescricao = function(id) {
-			descricaoService.deletarDescricao(id);
-			
+		$scope.deletarDescricao = function(index) {
+			indexDel = index;			
+			descricaoService.deletarDescricao($scope.descricoes[index].id).then(removerDaLista, mensagemErroExcluir);			
+		};
+		
+		function removerDaLista() {
+			toastr.success("Descrição excluída");
 			//Remove o elemento da pagina 
 			//(a navegacao fica mais fluida quando nao atualiza a lista, alem de nao precisar consultar novamente no banco)
-			var index = 0;
-			for(var i = 0; i < $scope.descricoes.length; i++) {
-				if($scope.descricoes[i].id == id) {
-					index = i;
-					break;
-				}
-			}						
-			$scope.descricoes.splice(index, 1);
-		};
+			$scope.descricoes.splice(indexDel, 1);
+		}
 		
 		//Atualiza o array de notas consultando o web service
 		function atualizarLista(data) {
+			mensagemSucesso();
 			$scope.descricoes.push(data);
 		}
 		
@@ -63,6 +63,18 @@
 		$scope.visualizarDescricao = function(descricao) {
 			$scope.viewDescricao = descricao;
 		}
+		
+		function mensagemSucesso() {
+			toastr.success("Descrição salva!");
+		}
+		
+		function mensagemErroSalvar() {
+			toastr.error("Não foi possível salvar a descrição","Erro");
+		}
+		
+		function mensagemErroExcluir() {
+			toastr.error("Não foi possível excluir a descrição","Erro");
+		}	
 		
 	}
 	

@@ -18,8 +18,9 @@ public interface PedidoRepository extends JpaRepository<Pedido, Long>{
 			+ "count(p.id), "
 			+ "sum(p.total)) "
 			+ "from Pedido p "
-			+ "group by month(p.data)")
+			+ "group by year(p.data), month(p.data)")
 	List<PedidoRelatorio> relatorio();
 	
+	List<Pedido> findAllByOrderByIdDesc();
 
 }

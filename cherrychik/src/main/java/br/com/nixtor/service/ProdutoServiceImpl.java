@@ -21,7 +21,7 @@ public class ProdutoServiceImpl implements ProdutoService {
 	}
 
 	public List<Produto> listarProdutos() {
-		return produtoRepository.findAll();
+		return produtoRepository.findAllByOrderByIdDesc();
 	}
 
 	public void excluir(Long id) {

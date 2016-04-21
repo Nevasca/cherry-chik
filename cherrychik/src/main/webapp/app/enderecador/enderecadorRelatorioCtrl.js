@@ -15,7 +15,7 @@
 			totalPac += relatorio[i].totalPac;
 			
 			graficoDadosTotal.push({
-				x: $filter('date')(relatorio[i].data, 'MMMM'),
+				x: $filter('date')(relatorio[i].data, 'MMMM yyyy'),
 				y: [relatorio[i].total,
 				    relatorio[i].totalSedex,
 				    relatorio[i].totalPac]
@@ -57,7 +57,7 @@
 		$scope.configTipo = {
 				title: "Total SEDEX e PAC",
 				tooltips: true,
-				labels: true,
+				labels: false,
 				mouseover: function(){},
 				mouseout: function(){},
 				click: function(){},

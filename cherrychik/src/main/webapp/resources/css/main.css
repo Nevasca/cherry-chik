@@ -39,3 +39,8 @@ textarea {
 /* 	margin-left: 20px; */
 	height: 400px;
 }
+
+.conf-exclusao {
+	background-color: #ededed; 
+	padding-left: 20px;
+}

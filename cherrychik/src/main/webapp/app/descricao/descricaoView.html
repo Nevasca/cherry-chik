@@ -62,7 +62,7 @@
 <!-- Fim Dicas -->
 
 <!-- Tabela com as descricoes ja cadastradas -->
-<div class="row" style="margin-top: 30px">
+<div class="row" style="margin-top: 30px; margin-bottom: 200px;">
 	<table class="table table-striped">
 		<thead>
 			<tr>
@@ -80,10 +80,22 @@
 					<a class="btn btn-link" data-toggle="modal" data-target="#viewDescricao" ng-click="visualizarDescricao(descricao)">
 						{{descricao.template | limitTo:"75"}}<span ng-if="descricao.template.length > 75">...</span>
 					</a>
+					
+					<!-- Confirmação de exclusão da descrição -->
+					<div id="aviso{{descricao.id}}" class="panel-collapse collapse conf-exclusao">  				
+				  		<strong>Deletar #{{descricao.id}}?</strong>
+				  		<a class="btn btn-link" ng-click="deletarDescricao($index)">
+							Deletar
+						</a>
+						<a class="btn btn-link" data-toggle="collapse" data-target="#aviso{{descricao.id}}">
+							<strong>Melhor não</strong>
+						</a>
+					</div>
+					
 				</td>
 				<td>										
 					<button class="btn btn-primary" ng-click="editarDescricao(descricao)"><span class="glyphicon glyphicon-pencil"></span> Editar</button>
-					<a class="btn btn-default" ng-click="deletarDescricao(descricao.id)"><span class="glyphicon glyphicon-remove"></span> Deletar</a>					
+					<a class="btn btn-default" data-toggle="collapse" data-target="#aviso{{descricao.id}}"><span class="glyphicon glyphicon-remove"></span> Deletar</a>					
 				</td>
 			</tr>
 		</tbody>

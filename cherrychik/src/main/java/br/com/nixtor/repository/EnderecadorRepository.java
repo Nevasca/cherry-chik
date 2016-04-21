@@ -20,7 +20,9 @@ public interface EnderecadorRepository extends JpaRepository<Enderecador, Long>{
 			+ "count(e.id), "
 			+ "sum(case when e.tipo = 'SEDEX' then 1 else 0 end), "
 			+ "sum(case when e.tipo = 'PAC' then 1 else 0 end)) " +
-			"from Enderecador e group by month(e.data)")
+			"from Enderecador e group by year(e.data), month(e.data)")
 	List<EnderecadorRelatorio> relatorio();
+	
+	List<Enderecador> findAllByOrderByIdDesc();
 
 }

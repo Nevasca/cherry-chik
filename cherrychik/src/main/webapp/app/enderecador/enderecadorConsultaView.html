@@ -41,7 +41,7 @@
 						{{enderecador.endereco | limitTo:"50"}}<span ng-if="enderecador.endereco.length > 50">...</span>
 					</a>
 					<!-- Confirmação de exclusão do enderecador -->
-					<div id="aviso{{enderecador.id}}" class="panel-collapse collapse">  				
+					<div id="aviso{{enderecador.id}}" class="panel-collapse collapse conf-exclusao">  				
 				  		<strong>Deletar #{{enderecador.id}}?</strong>
 				  		<a class="btn btn-link" ng-click="deletarEnderecador($index)">
 							Deletar

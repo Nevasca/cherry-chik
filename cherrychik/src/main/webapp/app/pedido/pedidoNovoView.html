@@ -79,7 +79,7 @@
 		<p class="text-center">
 			<button class="btn btn-default btn-lg" 
 				ng-disabled="pedido.itens.length == 0" 
-				ng-click="finalizarPedido()">Finalizar Pedido
+				ng-click="finalizarPedido()">{{pedido.id ? "Alterar Pedido" : "Finalizar Pedido"}}
 			</button>
 		</p>		
 	</div>

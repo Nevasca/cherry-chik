@@ -11,12 +11,12 @@
 		for(var i = 0; i < relatorio.length; i++) {
 			
 			graficoDadosTotal.push({
-				x: $filter('date')(relatorio[i].data, 'MMMM'),
+				x: $filter('date')(relatorio[i].data, 'MMMM yyyy'),
 				y: [relatorio[i].total]
 			});
 			
 			graficoDadosFaturamento.push({
-				x: $filter('date')(relatorio[i].data, 'MMMM'),
+				x: $filter('date')(relatorio[i].data, 'MMMM yyyy'),
 				y: [relatorio[i].faturamento]
 			});
 		}

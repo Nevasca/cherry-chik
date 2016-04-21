@@ -35,7 +35,7 @@ public class PedidoServiceImpl implements PedidoService {
 	}
 
 	public List<Pedido> listarPedidos() { 
-		return pedidoRepository.findAll();
+		return pedidoRepository.findAllByOrderByIdDesc();
 	}
 
 	public Pedido buscarPorId(Long id) { 

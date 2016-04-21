@@ -2,9 +2,9 @@
 	
 	angular
 		.module("gestaoCherry")
-		.controller("PedidoNovoCtrl", ["$scope", "produtos", "pedidoService", "pedido", PedidoNovoCtrl]);
+		.controller("PedidoNovoCtrl", ["$scope", "produtos", "pedidoService", "pedido", "$location", PedidoNovoCtrl]);
 	
-	function PedidoNovoCtrl($scope, produtos, pedidoService, pedido) {
+	function PedidoNovoCtrl($scope, produtos, pedidoService, pedido, $location) {
 		
 		$scope.produtos = produtos; //Lista de produtos cadastrados no sistema
 						
@@ -50,9 +50,31 @@
 		
 		$scope.finalizarPedido = function() {
 			$scope.pedido.total = $scope.calcularTotal();
-			pedidoService.salvarPedido($scope.pedido);
+			if($scope.pedido.id) { //Se for alteracao de pedido, permanecer na pagina 
+				pedidoService.salvarPedido($scope.pedido).then(mensagemSucesso, mensagemErroAlterar);
+			} 
+			else { //Redirecionar para outra pagina se for um novo
+				pedidoService.salvarPedido($scope.pedido).then(redirecionar);
+			}
+			
 		};
 		
+		function redirecionar() {
+			toastr.success("Pedido finalizado");
+			$location.path("/pedidoConsulta");
+		}
+		
+		function mensagemErro() {
+			toastr.error("Não foi possível finalizar o pedido");
+		}
+		
+		function mensagemErroAlterar() {
+			toastr.error("Não foi possível alterar o pedido");
+		}
+		
+		function mensagemSucesso() {
+			toastr.success("Pedido alterado");
+		}
 	}
 	
 }());
