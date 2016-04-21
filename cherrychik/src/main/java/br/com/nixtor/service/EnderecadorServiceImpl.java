@@ -1,5 +1,7 @@
 package br.com.nixtor.service;
 
+import java.sql.Timestamp;
+import java.util.Date;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,6 +20,9 @@ public class EnderecadorServiceImpl implements EnderecadorService {
 	
 	@Transactional
 	public Enderecador salvar(Enderecador enderecador) {
+		if(enderecador.getId() == null) { //Se for um novo enderecador, setar a data atual
+			enderecador.setData(new Timestamp(new Date().getTime()));
+		}
 		return enderecadorRepository.save(enderecador);
 	}
 
@@ -29,19 +34,12 @@ public class EnderecadorServiceImpl implements EnderecadorService {
 		return enderecadorRepository.findAllByOrderByIdDesc();
 	}
 
-	public List<Enderecador> pesquisarEnderecador(Enderecador enderecador) {
-		
-		//Se foi digitado algo no pedido
-		if(enderecador.getPedido().length() > 0) {
-			return enderecadorRepository.findByPedido(enderecador.getPedido());
-		}
-		else {
-			return listarEnderecadores();
-		}		
-	}
-
 	public List<EnderecadorRelatorio> relatorio() {
 		return enderecadorRepository.relatorio();
+	}
+
+	public List<Enderecador> listarEnderecadoresPorData(Date data) {
+		return enderecadorRepository.listarEnderecadoresPorData(data);
 	}
 
 }

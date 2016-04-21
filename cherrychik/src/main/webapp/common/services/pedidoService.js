@@ -15,6 +15,10 @@
 			return $http.get(url).then(function(response){return response.data;});
 		}
 		
+		function listarPedidosPorData(data) {
+			return $http.post(url + "filtro/", data).then(function(response){return response.data;});
+		}
+		
 		function buscarPorId(id) {
 			return $http.get(url + id).then(function(response){return response.data;});
 		}
@@ -39,10 +43,11 @@
 		return {			
 			salvarPedido: salvarPedido,		
 			listarPedidos: listarPedidos,
+			listarPedidosPorData: listarPedidosPorData,
 			buscarPorId: buscarPorId,
 			calcularSubtotal: calcularSubtotal,
 			calcularTotal: calcularTotal,
-			relatorio: relatorio
+			relatorio: relatorio,			
 		}
 		
 	}

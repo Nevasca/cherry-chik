@@ -1,7 +1,6 @@
 package br.com.nixtor.model;
 
 
-import java.sql.Timestamp;
 import java.util.Date;
 
 import javax.persistence.Column;
@@ -21,7 +20,7 @@ public class Enderecador {
 	private String tipo;
 	@Column(length = 6)
 	private String pedido;
-	private Timestamp data = new Timestamp(new Date().getTime());;	
+	private Date data;	
 
 	public Long getId() {
 		return id;
@@ -55,11 +54,11 @@ public class Enderecador {
 		this.pedido = pedido;
 	}
 
-	public Timestamp getData() {
+	public Date getData() {
 		return data;
 	}
 
-	public void setData(Timestamp data) {
+	public void setData(Date data) {
 		this.data = data;
 	}
 }

@@ -24,7 +24,7 @@ public class Email {
 	
 	public void enviar(String assunto, String conteudo, boolean html) {
 		Properties props = new Properties();
-        /** Parâmetros de conexão com servidor Hotmail */
+        /** Parametros de conexao com servidor Hotmail */
         props.put("mail.transport.protocol", "smtp");
         props.put("mail.smtp.host", "smtp.live.com");
         props.put("mail.smtp.socketFactory.port", "587");
@@ -41,7 +41,7 @@ public class Email {
                          }
                     });
 
-        /** Ativa Debug para sessão */
+        /** Ativa Debug para sessao */
         session.setDebug(true);
 
         try {
@@ -49,7 +49,7 @@ public class Email {
               Message message = new MimeMessage(session);
               message.setFrom(new InternetAddress(EMAIL)); //Remetente
 
-              Address[] toUser = InternetAddress //Destinatário(s)
+              Address[] toUser = InternetAddress //Destinatï¿½rio(s)
                          .parse(DESTINATARIO);  
 
               message.setRecipients(Message.RecipientType.TO, toUser);
@@ -62,7 +62,7 @@ public class Email {
             	  message.setText(conteudo);  
               }
                             
-              /**Método para enviar a mensagem criada*/
+              /**Metodo para enviar a mensagem criada*/
               Transport.send(message);
 
               System.out.println("Feito!!!");
@@ -73,17 +73,17 @@ public class Email {
 	}
 	
 	public void novoEmailPedido(Pedido pedido) {
-		String html = "<table><tr><td>Nome</td><td>Quantidade</td><td>Preço Unitário</td></tr>";		
-		for(int i = 0; i < pedido.getItens().size(); i++) {
-			html += "<tr>";
-			html += "<td>" + pedido.getItens().get(i).getNome() + "</td>";
-			html += "<td>" + pedido.getItens().get(i).getQuantidade() + "</td>";
-			html += "<td>R$ " + pedido.getItens().get(i).getPreco() + "</td>";
-			html += "</tr>";
-		}
-				
-		String assunto = "Novo pedido na loja";
-		
-		enviar(assunto, html, true);
+//		String html = "<table><tr><td>Nome</td><td>Quantidade</td><td>PreÃ§o UnitÃ¡rio</td></tr>";		
+//		for(int i = 0; i < pedido.getItens().size(); i++) {
+//			html += "<tr>";
+//			html += "<td>" + pedido.getItens().get(i).getNome() + "</td>";
+//			html += "<td>" + pedido.getItens().get(i).getQuantidade() + "</td>";
+//			html += "<td>R$ " + pedido.getItens().get(i).getPreco() + "</td>";
+//			html += "</tr>";
+//		}
+//				
+//		String assunto = "Novo pedido na loja";
+//		
+//		enviar(assunto, html, true);
 	}
 }

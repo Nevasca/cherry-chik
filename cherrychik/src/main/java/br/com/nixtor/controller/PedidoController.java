@@ -1,5 +1,6 @@
 package br.com.nixtor.controller;
 
+import java.util.Date;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -48,5 +49,11 @@ public class PedidoController {
 		
 		List<PedidoRelatorio> relatorio = pedidoService.relatorio();
 		return new ResponseEntity<List<PedidoRelatorio>>(relatorio, HttpStatus.OK);
+	}
+	
+	@RequestMapping(value = URL + "/filtro/", method = RequestMethod.POST)
+	public ResponseEntity<List<Pedido>> listarPedidosPorData(@RequestBody Date data) {		
+		List<Pedido> pedidos = pedidoService.listarPedidosPorData(data);
+		return new ResponseEntity<List<Pedido>>(pedidos, HttpStatus.OK);
 	}
 }

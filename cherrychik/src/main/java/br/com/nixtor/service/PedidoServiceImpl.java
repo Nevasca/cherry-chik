@@ -23,11 +23,8 @@ public class PedidoServiceImpl implements PedidoService {
 	
 	@Transactional
 	public Pedido salvar(Pedido pedido) {		
-		if(pedido.isNotaFiscal()) {
-			//email.novoEmailPedido(pedido);
-		}
-		
-		if(pedido.getId() == null) { //Se for um novo pedido, setar a data atual
+		if(pedido.getId() == null) { //Se for um novo pedido, setar a data atual e mandar um email
+			email.novoEmailPedido(pedido);
 			pedido.setData(new Timestamp(new Date().getTime()));
 		}
 		
@@ -39,12 +36,16 @@ public class PedidoServiceImpl implements PedidoService {
 	}
 
 	public Pedido buscarPorId(Long id) { 
-		return pedidoRepository.findOne(id);
+		return pedidoRepository.findOne(id);		
 	}
 
 	public List<PedidoRelatorio> relatorio() {
 		
 		return pedidoRepository.relatorio();
+	}
+
+	public List<Pedido> listarPedidosPorData(Date data) {
+		return pedidoRepository.listarPedidosPorData(data);
 	}
 
 //	public double calcularTotal(List<Item> itens) {

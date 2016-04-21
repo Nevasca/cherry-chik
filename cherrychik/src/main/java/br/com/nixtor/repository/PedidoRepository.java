@@ -1,5 +1,6 @@
 package br.com.nixtor.repository;
 
+import java.util.Date;
 import java.util.List;
 
 import org.springframework.data.jpa.repository.JpaRepository;
@@ -22,5 +23,10 @@ public interface PedidoRepository extends JpaRepository<Pedido, Long>{
 	List<PedidoRelatorio> relatorio();
 	
 	List<Pedido> findAllByOrderByIdDesc();
-
+	
+	@Query("Select p "			
+			+ "from Pedido p "
+			+ "where date_format(p.data, '%Y %m %d') = date_format(?1, '%Y %m %d') "
+			+ "order by p.id desc")
+	List<Pedido> listarPedidosPorData(Date data);
 }

@@ -16,7 +16,7 @@
 				<label for="inputTemplateDescricao">Template</label>
 				<p >A paleta de cores será adicionada mais tarde, não se preocupe com ela agora</p>
 				<textarea id="inputTemplateDescricao" class="form-control" rows="10" ng-model="novaDescricao.template"
-					placeholder="- Insira uma descrição bem legal para o Blazer, mesmo que não tenhamos um" maxlength="500"></textarea>
+					placeholder="- Insira uma descrição bem legal para o Blazer" maxlength="500"></textarea>
 				Caracteres restantes: {{500 - novaDescricao.template.length}}
 			</div>
 			<div class="form-group">
@@ -75,7 +75,7 @@
 		<tbody>
 			<tr ng-repeat="descricao in descricoes">
 				<td>{{descricao.id}}</td>
-				<td>{{descricao.nome}}</a></td>
+				<td>{{descricao.nome}}</td>
 				<td style="font-style: italic">
 					<a class="btn btn-link" data-toggle="modal" data-target="#viewDescricao" ng-click="visualizarDescricao(descricao)">
 						{{descricao.template | limitTo:"75"}}<span ng-if="descricao.template.length > 75">...</span>

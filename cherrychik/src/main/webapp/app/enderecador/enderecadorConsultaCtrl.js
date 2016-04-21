@@ -8,7 +8,7 @@
 		
 		$scope.enderecadores = enderecadores;
 		$scope.viewEnderecador = {};
-		$scope.buscaEnderecador = {};
+		$scope.enderecadorBusca = {};
 		
 		var indexDel = 0;
 		
@@ -26,11 +26,11 @@
 			$scope.viewEnderecador = enderecador;
 		};
 		
-		$scope.filtrarEnderecador = function() {
+		$scope.pesquisarEnderecador = function() {
 			
-			//Se foi digitado algo no campo de busca, filtrar com o pedido
-			if($scope.buscaEnderecador.pedido) {			
-				enderecadorService.pesquisarEnderecador($scope.buscaEnderecador).then(atualizarLista);
+			//Se foi digitado algo no campo de busca, pesquisar com a data
+			if($scope.enderecadorBusca.data) {
+				enderecadorService.listarEnderecadoresPorData($scope.enderecadorBusca.data).then(atualizarLista);
 			}
 			else { //Caso contrário, pesquisar todos
 				enderecadorService.listarEnderecadores().then(atualizarLista);

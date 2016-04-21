@@ -1,11 +1,23 @@
 <div class="page-header">
 	<h1>
-		Produtos
+		Produtos <span class="badge">{{produtos.length}}</span>
+		<button class="btn btn-link" ui-sref="produtoCadastro({id: 0})"><span class="glyphicon glyphicon-plus"></span> Novo produto</button> 
 	</h1>	
 </div>
 
+<!-- Form para filtrar os produtos -->
+<div class="row">
+	<form class="form-inline">		
+		<div class="input-group">
+			<div class="input-group-addon"><span class="glyphicon glyphicon-search"></span></div>
+			<input type="text" class="form-control" style="width: 300px" placeholder="Filtrar por nome, preço ou código" ng-model="filtroProduto">
+		</div>	
+	</form>	
+</div>
+<!-- Fim do form -->
+
 <!-- Tabela com os produtos ja cadastrados -->
-<div class="row" style="margin-top: 30px">
+<div class="row area-consulta" style="margin-top: 30px">
 	<table class="table table-striped">
 		<thead>
 			<tr>
@@ -16,7 +28,7 @@
 			</tr>
 		</thead>
 		<tbody>
-			<tr ng-repeat="produto in produtos">
+			<tr ng-repeat="produto in produtos | filter:filtroProduto">
 				<td>{{produto.id}}</td>
 				<td>{{produto.nome}}
 				

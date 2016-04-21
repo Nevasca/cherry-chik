@@ -1,6 +1,7 @@
 package br.com.nixtor.model;
 
 import java.sql.Timestamp;
+import java.util.Date;
 import java.util.List;
 
 import javax.persistence.CascadeType;
@@ -20,7 +21,7 @@ public class Pedido {
 	private boolean notaFiscal;
 	@Column(length = 300)
 	private String observacao;
-	private Timestamp data;
+	private Date data;
 	private double total;
 
 	@OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
@@ -58,7 +59,7 @@ public class Pedido {
 		this.itens = itens;
 	}
 
-	public Timestamp getData() {
+	public Date getData() {
 		return data;
 	}
 

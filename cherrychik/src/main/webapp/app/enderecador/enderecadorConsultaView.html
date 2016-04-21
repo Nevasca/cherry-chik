@@ -1,37 +1,47 @@
 <div class="page-header">
 	<h1>
-		Endereçadores
-	</h1>
-	Lista dos endereçadores criados. Utilize o formulário para filtrar	
+		Endereçadores <span class="badge">{{enderecadores.length}}</span>
+		<button class="btn btn-link" ui-sref="enderecadorAdicionar"><span class="glyphicon glyphicon-plus"></span> Add Endereçador</button> 
+	</h1>	
 </div>
 
-<!-- Form para filtrar os endereçadores -->
+<!-- Form para pesquisar por data de inserção -->
+<div class="row" style="margin-bottom: 50px">
+	<form class="form-inline">
+		<div class="input-group">
+			<div class="input-group-addon">Data Adicionado</div>
+			<input type="date" class="form-control" ng-model="enderecadorBusca.data">			
+		</div>
+		<button class="btn btn-primary" ng-click="pesquisarEnderecador()"><span class="glyphicon glyphicon-search"></span> Pesquisar</button>
+	</form>
+</div>
+
+<!-- Form para filtrar os enderecadores -->
 <div class="row">
 	<form class="form-inline">
-		<div class="form-group">
-			<input type="text" class="form-control" placeholder="Número do pedido" ng-model="buscaEnderecador.pedido">
-		</div>
-		<button class="btn btn-primary" ng-click="filtrarEnderecador()"><span class="glyphicon glyphicon-search"></span> Pesquisar</button>		
+		<div class="input-group">
+			<div class="input-group-addon"><span class="glyphicon glyphicon-search"></span></div>
+			<input type="text" class="form-control" style="width: 300px" placeholder="Filtrar por pedido, tipo ou endereço" ng-model="filtroEnderecador">
+		</div>		
 	</form>
 </div>
 <!-- Fim do form -->
 
-
 <!-- Tabela com os enderecadores ja cadastrados -->
-<div class="row" style="margin-top: 30px">
+<div class="row area-consulta" style="margin-top: 30px">
 	<table class="table table-striped">
 		<thead>
 			<tr>
 				<th class="col-md-1">#</th>
 				<th class="col-md-1">Pedido</th>
 				<th class="col-md-1">Tipo</th>
-				<th class="col-md-2">Data Inserção</th>
+				<th class="col-md-2">Data Adicionado</th>
 				<th class="col-md-5">Endereço</th>
 				<th class="col-md-2">Ações</th>
 			</tr>
 		</thead>
 		<tbody>
-			<tr ng-repeat="enderecador in enderecadores">
+			<tr ng-repeat="enderecador in enderecadores | filter: filtroEnderecador">
 				<td>{{enderecador.id}}</td>
 				<td>{{enderecador.pedido}}</td>
 				<td>{{enderecador.tipo}}</td>

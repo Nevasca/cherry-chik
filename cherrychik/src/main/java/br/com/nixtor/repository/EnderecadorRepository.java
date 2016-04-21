@@ -1,5 +1,6 @@
 package br.com.nixtor.repository;
 
+import java.util.Date;
 import java.util.List;
 
 import org.springframework.data.jpa.repository.JpaRepository;
@@ -12,7 +13,11 @@ import br.com.nixtor.model.EnderecadorRelatorio;
 @Repository
 public interface EnderecadorRepository extends JpaRepository<Enderecador, Long>{
 	
-	List<Enderecador> findByPedido(String pedido);
+	@Query("Select e "			
+			+ "from Enderecador e "
+			+ "where date_format(e.data, '%Y %m %d') = date_format(?1, '%Y %m %d') "
+			+ "order by e.id desc")
+	List<Enderecador> listarEnderecadoresPorData(Date data);
 	
 	//Agrupa por mes e popula com o total geral e total de cada tipo de frete
 	@Query("Select new br.com.nixtor.model.EnderecadorRelatorio("

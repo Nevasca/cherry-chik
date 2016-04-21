@@ -19,8 +19,8 @@
 			return $http.get(url).then(function(response){return response.data;});
 		}
 		
-		function pesquisarEnderecador(enderecador) {
-			return $http.post(url + "filtro/", enderecador).then(function(response){return response.data;});
+		function listarEnderecadoresPorData(data) {
+			return $http.post(url + "filtro/", data).then(function(response){return response.data;});
 		}
 		
 		function relatorio() {
@@ -31,7 +31,7 @@
 			salvarEnderecador: salvarEnderecador,
 			deletarEnderecador: deletarEnderecador,
 			listarEnderecadores: listarEnderecadores,
-			pesquisarEnderecador: pesquisarEnderecador,
+			listarEnderecadoresPorData: listarEnderecadoresPorData,
 			relatorio: relatorio
 		}
 		

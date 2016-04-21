@@ -44,3 +44,8 @@ textarea {
 	background-color: #ededed; 
 	padding-left: 20px;
 }
+
+.area-consulta {	
+	height: 500px;
+	overflow-y: auto;
+}

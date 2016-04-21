@@ -1,5 +1,6 @@
 package br.com.nixtor.controller;
 
+import java.util.Date;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -41,11 +42,9 @@ public class EnderecadorController {
 		return new ResponseEntity<List<Enderecador>>(enderecadores, HttpStatus.OK);
 	}
 	
-	@RequestMapping(value = URL + "filtro/", method = RequestMethod.POST)
-	public ResponseEntity<List<Enderecador>> pesquisarEnderecador(@RequestBody Enderecador enderecador) {
-		
-		List<Enderecador> enderecadores = enderecadorService.pesquisarEnderecador(enderecador);		
-		
+	@RequestMapping(value = URL + "/filtro/", method = RequestMethod.POST)
+	public ResponseEntity<List<Enderecador>> listarEnderecadoresPorData(@RequestBody Date data) {		
+		List<Enderecador> enderecadores = enderecadorService.listarEnderecadoresPorData(data);
 		return new ResponseEntity<List<Enderecador>>(enderecadores, HttpStatus.OK);
 	}
 	
